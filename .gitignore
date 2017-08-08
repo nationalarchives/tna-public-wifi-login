@@ -1,0 +1,9 @@
+### JetBrains template
+.idea/
+
+### Node template
+node_modules/
+.idea/inspectionProfiles/
+.idea/modules.xml
+.idea/tna-public-wifi-login.iml
+.idea/workspace.xml
