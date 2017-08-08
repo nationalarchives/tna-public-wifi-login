@@ -1,0 +1,183 @@
+/*!
+ * Wifi Login CSS
+ */
+
+.banner-full-width {
+    padding: 1em;
+    min-height: 320px;
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    margin-bottom: 1.6em;
+}
+.banner-full-width h1 {
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+    text-align: center;
+    margin-top: 48px;
+}
+
+.blog-banner {
+    min-height: 260px;
+    position: relative;
+}
+.blog-banner h1 {
+    font-size: 2.6em;
+}
+.home .breadcrumbs {
+    display: inline-block;
+    color: #fff;
+    padding: 3px 7px;
+    background-color: #000;
+    background-color: rgba(0,0,0,.5);
+}
+.home .breadcrumbs a {
+    color: #fce45c;
+}
+.blog-toolbar {
+    padding: 0.6em 0;
+}
+.blog-nav {
+    margin-bottom: 1.6em;
+}
+.blog-nav a.button {
+    position: relative;
+    margin: 0.5em 0.5em 0.5em 0;
+}
+.blog-nav a:hover .button {
+    background: #FCE45C !important;
+    color: #000 !important;
+}
+.blog-nav a:hover span {
+    border-top: 20px solid #FCE45C !important;
+}
+.blog-nav .arrow-down {
+    position: absolute;
+    margin-left: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-top: 20px solid #008484;
+}
+.blog-nav a.secondary-btn {
+    background: #ddd;
+    color: #222;
+}
+a.secondary-btn:hover {
+    background: #FCE45C;
+    color: #000;
+    text-decoration: underline;
+    border: none;
+}
+/* nav */
+header {
+    padding-bottom: 0;
+}
+.feature-img .eye_caption {
+    background: url('../img/eye-caption.png');
+}
+.feature-img .eye_caption:hover {
+    background: url('../img/eye-caption-hover.png');
+}
+.feature-img .img-caption-top {
+    margin-top: 0;
+}
+.subscribe-icon {
+    padding: 5px !important;
+    margin-top: 0.5em !important;
+    float: right;
+}
+/* form */
+.blog-search {
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    background: rgba(0,0,0,.66);
+    width: 100%;
+}
+select {
+    border: 1px solid #ccc;
+    height: 39px;
+    margin: 0.5em 0;
+}
+/* Remove button margins in Webkit */
+.blog-search form, .blog-nav input {
+    margin: 0; padding: 0;
+}
+.blog-search form {
+    position: relative;
+    margin: 0.5em 0;
+    background-color: #008484;
+    padding: 1px;
+}
+.blog-search form input[type=text] {
+    /* style */
+    border: none;
+    padding: 7px;
+
+    /* default input size isn't wide enough */
+    width: 100%;
+
+    /* keeps input from overflowing its container */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /* prevents input from flowing behind the button */
+    padding-right: 60px;
+
+    /* line-height (which determines height) renders slightly different across browsers.
+    But specifiying a fixed line-height: 14px caused a 1px difference in IE.
+    I found it easier just to lock in the height */
+    height: 39px;
+}
+.blog-search form input[type="submit"] {
+    /* style */
+    background-image: url(../img/search-white.png);
+    border: none;
+    padding: 7px;
+
+    /* to match input height above */
+    height: 39px;
+    width: 39px;
+
+    /* removes the box from DOM */
+    float: right;
+
+    /* alternative to negative margin-top,
+    which seems to hide my button behind the input */
+    position: relative;
+    margin-top: -39px;
+}
+
+.no-breadcrumb {
+    margin-top: 46px;
+}
+
+.opening-times table {
+    width: 100%;
+}
+.follow-us img {
+    background-color: #008484;
+    border-radius: 50%;
+    padding: 9px;
+    margin: 0 0.2em 0.3em 0;
+}
+.tags a {
+    padding-right: 1em;
+}
+
+@media (max-width: 1024px) {
+    .blog-nav a:hover span {
+        border-top: none;
+    }
+    .blog-nav .arrow-down {
+        border-top: none;
+    }
+}
+
+
