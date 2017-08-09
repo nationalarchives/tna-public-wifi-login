@@ -32,10 +32,7 @@
     </div>
 </header>
 <main id="primary" role="main" class="content-area home">
-    <div role="banner" class="banner-full-width blog-banner feature-img"
-         style="background-image: url(http://via.placeholder.com/1200x300);">
-    </div>
-    <div class="">
+    <div class="body_spacing">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -45,7 +42,7 @@
                         </div>
                         <div class="row entry-content">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <p>You must accept our terms and conditions to connect <a title="t&c" href="#" tabindex="5">Terms and conditions</a></p>
+                                <p>You must accept our terms and conditions to connect <a title="t&c" href="#" tabindex="5">terms and conditions</a></p>
                                 <div id="t&c" class="overflow hide" tabindex="6">
                                     <h3>The National Archives' Internet Acceptable Use Policy Introduction</h3>
                                     <p>The National Archives provides Internet access for members of the public who visit our buildings and make use of the services and opportunities we provide. Visitors come to us for many different purposes: carrying out research activities, attending events and exhibitions, and collaborating with us. Our visitors also bring personal Internet-enabled devices, both for research and for their own use.</p>
@@ -84,6 +81,21 @@
                                     <p>We are bound by the regulations of the Data Protection Act 1998. We will not release information on the use of specific Internet resources by users except when required by law.</p>
 
                                 </div>
+                                <form action id="" class="" method="post">
+                                    <fieldset>
+                                        <legend>Terms and conditions with newsletter</legend>
+                                        <div class="form-row ckeckbox">
+                                            <input type="checkbox" id="accept" name="accept" value="yes">
+                                            <label for="accept">Check to accept our T&C</label>
+                                        </div>
+                                        <div class="form-row ckeckbox">
+                                            <input type="checkbox" name="newsletter" id="newsletter">
+                                            <label for="newsletter">Would you like to recieve our monthly newsletters</label>
+                                        </div>
+                                        <input type="submit" name="submit-connect" value="Connect" class="pull-right">
+
+                                    </fieldset>
+                                </form>
                             </div>
                         </div>
                     </article>
