@@ -83,14 +83,14 @@
                                                 <p>We are bound by the regulations of the Data Protection Act 1998. We will not release information on the use of specific internet resources by users except when required by law.</p>
 
                                             </div>
-                                            <form action id="accept-checkboxes" method="post">
+                                            <form id="accept-checkboxes" method="post" name="selRefForm">
                                                 <fieldset>
                                                     <legend>Terms and conditions with newsletter</legend>
-                                                    <div class="form-row ckeckbox">
-                                                        <input type="checkbox" id="accept" name="accept" value="yes">
+                                                    <div class="form-row checkbox">
+                                                        <input type="checkbox" id="accept" name="accept" value="yes" aria-required="true" required="required">
                                                         <label for="accept">Accept *</label>
                                                     </div>
-                                                    <div class="form-row ckeckbox">
+                                                    <div class="form-row checkbox">
                                                         <input type="checkbox" name="newsletter" id="newsletter">
                                                         <label for="newsletter">I would like to receive The National Archives' newsletter.</label>
                                                     </div>
@@ -98,7 +98,7 @@
                                                         <input type="email" id="email-signup" name="email-signup" placeholder="Enter your email address">
                                                     </div>
                                                     <div class="form-row submit">
-                                                        <input class="pull-left" type="submit" name="submit-connect" value="Connect" id="connect" disabled="disabled" aria-disabled="true">
+                                                        <input class="pull-left" type="submit" name="submit-connect" value="Connect" id="connect">
                                                     </div>
                                                 </fieldset>
                                             </form>

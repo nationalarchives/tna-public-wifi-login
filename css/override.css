@@ -33,11 +33,12 @@
 }
 
 .form-row {
-    max-width: 100%;
+    max-width: 92%;
+    margin: 0 auto;
+    margin-bottom: 1.5em !important;
 }
 
 .form-row label {
-    margin-left: .5em;
     cursor: pointer;
 }
 
@@ -66,6 +67,16 @@ legend {
     margin-top: 2em;
 }
 
+/*.form-row {*/
+    /*margin: 0 auto;*/
+/*}*/
+
 .form-row label {
     width: auto;
+}
+
+.checkbox {
+    position: relative;
+    display: block;
+    margin-top: 10px;
 }

@@ -1,19 +1,15 @@
 $(function() {
+    /*
+     * This is to show and hide the terms and conditions
+    */
     $('.entry-content a').on('click',function(e){
         e.preventDefault();
         $('.overflow').toggleClass('hide');
     });
 
-    $('#accept').on('change',function(){
-        if($(this).is(':checked')){
-            $('#connect').prop('disabled', false);
-            $('#connect').attr('aria-disabled', false);
-        } else {
-            $('#connect').prop('disabled', true);
-            $('#connect').attr('aria-disabled', true);
-        }
-    });
-
+    /*
+     * This is to check show and hide the email field if checked.
+    */
     $('#newsletter').on('change', function(){
        if($(this).is(':checked')){
            $('.email-signup').removeClass( "hide" );
@@ -21,4 +17,10 @@ $(function() {
            $('.email-signup').addClass( "hide" );
        }
     });
+
+    /*
+     * This is to remove the required attribute as we only want to use this if there is no JS.
+    */
+    $('#accept').removeAttr('required');
+
 });
