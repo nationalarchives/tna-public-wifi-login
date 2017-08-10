@@ -92,5 +92,6 @@ legend {
 }
 
 .field-error {
-    outline: 2px solid #EBAB2C;
+    outline: 3px solid #EBAB2C;
+    outline-offset: -2px;
 }
