@@ -23,4 +23,17 @@ $(function() {
     */
     $('#accept').removeAttr('required');
 
+    /*
+     * Custom validations for checkbox
+    */
+    $('#accept-checkboxes').on('submit', function(e){
+        if( $('#accept').is(':checked') ){
+            return;
+        } else {
+            $('#accept-error').removeClass('hide');
+            $('#accept').addClass('field-error');
+            e.preventDefault();
+        }
+    });
+
 });

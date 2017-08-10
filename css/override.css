@@ -80,3 +80,17 @@ legend {
     display: block;
     margin-top: 10px;
 }
+
+.form-row .form-error {
+    color: #000;
+    width: 100%;
+    max-width: 420px;
+    padding: 3px;
+    background: #FFF8D0;
+    display: inline;
+    border: 2px solid #EBAB2C;
+}
+
+.field-error {
+    outline: 2px solid #EBAB2C;
+}
