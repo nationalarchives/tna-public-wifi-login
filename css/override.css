@@ -95,3 +95,20 @@ legend {
     outline: 3px solid #EBAB2C;
     outline-offset: -2px;
 }
+
+#email-signup, #connect {
+    margin-left: 1em;
+}
+
+
+@media (max-width: 1024px) {
+    .form-row .form-error {
+        display: block;
+    }
+    #accept-error, #connect {
+        margin-left: 1em;
+    }
+    #connect {
+        padding: 0.3em .5em;
+    }
+}
