@@ -1,6 +1,6 @@
 'use strict';
 
-const publicWifi = (function(window) {
+const publicWifi = ((window) => {
 
     //defined variables
     const   toggleTC = $('.entry-content a'),
@@ -11,32 +11,30 @@ const publicWifi = (function(window) {
     /*
      * This is to show and hide the terms and conditions
     */
-    const toggleTCfunc = toggleTC.on('click',function(e){
-        e.preventDefault();
-        toggleTCDiv.toggleClass('hide');
-    });
+    const toggleTCfunc = () => {
+        toggleTC.on('click', (e) => {
+            e.preventDefault();
+            toggleTCDiv.toggleClass('hide');
+        });
+    };
 
     /*
      * This is to check show and hide the email field if checked.
     */
-    $('#newsletter').on('change', function(){
-        if($(this)[0].checked){
-            emailSignUpField.removeClass( "hide" );
-        } else {
-            emailSignUpField.addClass( "hide" );
-        }
-    });
+    const newsLetter = () => {
+        $('#newsletter').on('change', function(){
+            if($(this)[0].checked){
+                emailSignUpField.removeClass( "hide" );
+            } else {
+                emailSignUpField.addClass( "hide" );
+            }
+        });
+    };
 
     /*
      * This is to remove the required attribute as we only want to use this if there is no JS.
     */
-    // const removeRequired = function(){
-    //   return accept.removeAttr('required');
-    // };
-    // removeRequired();
-    const removeRequired = (() => { accept.removeAttr('required'); })();
-    console.log('Hello World 3 times');
-    //removeRequired();
+    const removeRequired = () => { accept.removeAttr('required'); };
 
 
     /*
@@ -63,4 +61,18 @@ const publicWifi = (function(window) {
             e.preventDefault();
         }
     });
+
+    /*
+     * explicitly return methods when instantiated
+    */
+    return {
+        required : removeRequired,
+        toggleTearmsAndConditions : toggleTCfunc,
+        revealNewsletterField : newsLetter
+    };
+
 })(window);
+
+publicWifi.required();
+publicWifi.toggleTearmsAndConditions();
+publicWifi.revealNewsletterField();
