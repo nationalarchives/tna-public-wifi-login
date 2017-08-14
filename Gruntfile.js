@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 
     //project config
     grunt.initConfig({
-        pkg:grunt.file.read.JSON('package.json'),
+        pkg:grunt.file.readJSON('package.json'),
         eslint: {
             target: "src/app.js",
             options: {
@@ -38,8 +38,8 @@ module.exports = function (grunt) {
         sass: {
             build: {
                 files: [{
-                    src: ['css/sass/main.scss'],
-                    dest: 'css/main.css'
+                    src: ['css/sass/tnaWifi.scss'],
+                    dest: 'css/tnaWifi.css'
                 }]
             }
         },
