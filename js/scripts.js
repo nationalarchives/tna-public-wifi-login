@@ -2,7 +2,9 @@ $(function() {
     /*
      * This is to show and hide the terms and conditions
     */
-    document.querySelector('.entry-content a').on('click',function(e){
+    var toggleTC = $('.entry-content a');
+
+    toggleTC.on('click',function(e){
         e.preventDefault();
         $('.overflow').toggleClass('hide');
     });
@@ -10,7 +12,7 @@ $(function() {
     /*
      * This is to check show and hide the email field if checked.
     */
-    document.getElementById('newsletter').on('change', function(){
+    $('#newsletter').on('change', function(){
        if($(this)[0].checked){
            $('.email-signup').removeClass( "hide" );
        } else {
