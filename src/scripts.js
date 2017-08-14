@@ -1,17 +1,17 @@
 'use strict';
 
-var publicWifi = function (window) {
+const publicWifi = (function(window) {
 
     //defined variables
-    var toggleTC = $('.entry-content a'),
-        toggleTCDiv = $('.overflow'),
-        emailSignUpField = $('.email-signup'),
-        accept = $('#accept');
+    const   toggleTC = $('.entry-content a'),
+            toggleTCDiv = $('.overflow'),
+            emailSignUpField = $('.email-signup'),
+            accept = $('#accept');
 
     /*
      * This is to show and hide the terms and conditions
     */
-    var toggleTCfunc = toggleTC.on('click', function (e) {
+    const toggleTCfunc = toggleTC.on('click',function(e){
         e.preventDefault();
         toggleTCDiv.toggleClass('hide');
     });
@@ -19,11 +19,11 @@ var publicWifi = function (window) {
     /*
      * This is to check show and hide the email field if checked.
     */
-    $('#newsletter').on('change', function () {
-        if ($(this)[0].checked) {
-            emailSignUpField.removeClass("hide");
+    $('#newsletter').on('change', function(){
+        if($(this)[0].checked){
+            emailSignUpField.removeClass( "hide" );
         } else {
-            emailSignUpField.addClass("hide");
+            emailSignUpField.addClass( "hide" );
         }
     });
 
@@ -34,9 +34,7 @@ var publicWifi = function (window) {
     //   return accept.removeAttr('required');
     // };
     // removeRequired();
-    var removeRequired = function () {
-        accept.removeAttr('required');
-    }();
+    const removeRequired = (() => { accept.removeAttr('required'); })();
     console.log('Hello World 3 times');
     //removeRequired();
 
@@ -44,19 +42,20 @@ var publicWifi = function (window) {
     /*
      * Check's if the Accept checkbox is checked and hide's the error message.
     */
-    var onClick = function () {
-        accept.on("click", function () {
-            if ($(this)[0].checked) {
+    var onClick = (function () {
+        accept.on("click", function(){
+            if($(this)[0].checked){
                 $('#accept-error').addClass('hide');
             }
         });
-    }();
+    })();
+
 
     /*
      * Custom validations for checkbox
     */
-    $('#accept-checkboxes').on('submit', function (e) {
-        if (accept[0].checked) {
+    $('#accept-checkboxes').on('submit', function(e){
+        if( accept[0].checked ){
             return;
         } else {
             $('#accept-error').removeClass('hide');
@@ -64,5 +63,4 @@ var publicWifi = function (window) {
             e.preventDefault();
         }
     });
-}(window);
-//# sourceMappingURL=scripts.js.map
+})(window);

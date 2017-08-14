@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg:grunt.file.readJSON('package.json'),
         eslint: {
-            target: "src/app.js",
+            target: "src/scripts.js",
             options: {
                 configFile: 'conf/eslint.json'
             }
@@ -15,7 +15,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "dist/app.js": "src/app.js"
+                    "js/scripts.js": "src/scripts.js"
                 }
             }
         },
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['src/app.js', 'tests/test.js'],
+                files: ['src/scripts.js', 'tests/test.js'],
                 tasks: ['default'],
                 options: {
                     spawn: false
