@@ -6,7 +6,11 @@ var publicWifi = function (window) {
     var toggleTC = $('.entry-content a'),
         toggleTCDiv = $('.overflow'),
         emailSignUpField = $('.email-signup'),
-        accept = $('#accept');
+        accept = $('#accept'),
+        newsletterField = $('#newsletter'),
+        acceptCheckboxError = $('#accept-error');
+
+    //let $this = $(this);
 
     /*
      * This is to show and hide the terms and conditions
@@ -22,8 +26,9 @@ var publicWifi = function (window) {
      * This is to check show and hide the email field if checked.
     */
     var newsLetter = function newsLetter() {
-        $('#newsletter').on('change', function () {
-            if ($(this)[0].checked) {
+        newsletterField.on('change', function () {
+            var $this = $(undefined);
+            if ($this[0].checked) {
                 emailSignUpField.removeClass("hide");
             } else {
                 emailSignUpField.addClass("hide");
@@ -41,13 +46,13 @@ var publicWifi = function (window) {
     /*
      * Check's if the Accept checkbox is checked and hide's the error message.
     */
-    var onClick = function () {
+    var onClick = function onClick() {
         accept.on("click", function () {
-            if ($(this)[0].checked) {
+            if ($this[0].checked) {
                 $('#accept-error').addClass('hide');
             }
         });
-    }();
+    };
 
     /*
      * Custom validations for checkbox
@@ -67,12 +72,14 @@ var publicWifi = function (window) {
     */
     return {
         required: removeRequired,
-        toggleTearmsAndConditions: toggleTCfunc,
-        revealNewsletterField: newsLetter
+        toggleTermsAndConditions: toggleTCfunc,
+        revealNewsletterField: newsLetter,
+        hideError: onClick
     };
 }(window);
 
 publicWifi.required();
-publicWifi.toggleTearmsAndConditions();
+publicWifi.toggleTermsAndConditions();
 publicWifi.revealNewsletterField();
+publicWifi.hideError();
 //# sourceMappingURL=scripts.js.map
