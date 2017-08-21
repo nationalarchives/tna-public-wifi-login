@@ -34,6 +34,21 @@ const publicWifi = ((window) => {
     };
 
     /*
+     * Validate email
+    */
+    /*const validEmail = (email) => {
+        var reGex = /\S+@\S+\.\S+/;
+        return reGex.test(email);
+    };*/
+
+    const checkField = () => {
+        let emailField= $('#email-signup').val().length;
+        if (emailField > 1) {
+            console.log('field is empty');
+        }
+    };
+
+    /*
      * This is to remove the required attribute as we only want to use this if there is no JS.
     */
     const removeRequired = () => { acceptCheckbox.removeAttr('required'); };
@@ -53,7 +68,7 @@ const publicWifi = ((window) => {
 
 
     /*
-     * Custom validations for checkbox
+     * Submit the forms
     */
     const submitForm = () => {
         $('#connect').on('click', (e) => {
@@ -70,15 +85,21 @@ const publicWifi = ((window) => {
         });
     };
 
+    const stuff = () => {
+      console.log('Hello');
+    };
+
     /*
     * initialize all functions
     */
     const init = () => {
         removeRequired();
         toggleTCfunc();
+        checkField();
         newsLetter();
         onClick();
         submitForm();
+        //stuff();
     };
     init();
 
