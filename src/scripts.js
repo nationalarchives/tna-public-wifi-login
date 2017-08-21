@@ -4,7 +4,7 @@ const publicWifi = ((window) => {
 
     //defined variables
     const   toggleTC = $('.entry-content a'),
-            toggleTCDiv = $('.overflow'),
+            toggleTCDiv = $('#tAndC'),
             emailSignUpField = $('#emailSignupContainer'),
             acceptCheckbox = $('#acceptCheckbox'),
             newsletterCheckbox = $('#newsletterCheckbox'),
@@ -46,6 +46,7 @@ const publicWifi = ((window) => {
         acceptCheckbox.on("click", () => {
             if(acceptCheckbox[0].checked){
                 acceptCheckboxError.addClass('hide');
+                acceptCheckbox.removeAttr('class');
             }
         });
     };
@@ -54,13 +55,13 @@ const publicWifi = ((window) => {
     /*
      * Custom validations for checkbox
     */
-    const acceptValidate = () => {
+    const submitForm = () => {
         $('#accept-checkboxes').on('submit', function(e){
-            if( acceptCheckbox[0].checked ){
+            if( acceptCheckbox.is(':checked') ){
                 return;
             } else {
                 acceptCheckboxError.removeClass('hide');
-                acceptCheckbox.className += ' field-error';
+                acceptCheckbox.addClass('field-error');
                 e.preventDefault();
             }
         });
@@ -74,7 +75,7 @@ const publicWifi = ((window) => {
         toggleTermsAndConditions : toggleTCfunc,
         revealNewsletterField : newsLetter,
         hideError : onClick,
-        acceptValidate : acceptValidate
+        submitForm : submitForm
     };
 
 })(window);
@@ -83,4 +84,4 @@ publicWifi.required();
 publicWifi.toggleTermsAndConditions();
 publicWifi.revealNewsletterField();
 publicWifi.hideError();
-publicWifi.acceptValidate();
+publicWifi.submitForm();

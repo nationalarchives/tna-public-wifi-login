@@ -1,21 +1,11 @@
-/*!
- * Styles for wifi prototype 1
+/*
+ * Styles for Public Wifi Login
  */
-.prototype-index article {
-  margin: 1.6em 0;
-  padding: 1em;
-}
 
-
-.footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.entry-content a {
-  cursor: pointer;
+.entry-content {
+  a {
+    cursor: pointer;
+  }
 }
 
 .overflow {
@@ -34,16 +24,13 @@
 
 .form-row {
   max-width: 92%;
-  margin: 0 auto;
-  margin-bottom: 1.5em !important;
+  margin: 0 auto 1.5em;
 }
 
-.form-row label {
-  cursor: pointer;
-}
-
-header {
-  padding: 1.5em;
+.form-row {
+  label {
+    cursor: pointer;
+  }
 }
 
 legend {
@@ -53,6 +40,7 @@ legend {
 .body_spacing {
   padding-top: 1.5em;
 }
+
 #connect {
   width: 25%;
 }
@@ -66,10 +54,6 @@ legend {
 .submit {
   margin-top: 2em;
 }
-
-/*.form-row {*/
-/*margin: 0 auto;*/
-/*}*/
 
 .form-row label {
   width: auto;
