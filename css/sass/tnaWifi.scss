@@ -21,7 +21,7 @@ $errorOutline: #ebab00;
 }
 
 .overflow:focus {
-  outline: 3px solid #ebab00;
+  outline: 3px solid $errorOutline;
 }
 
 .form-row {

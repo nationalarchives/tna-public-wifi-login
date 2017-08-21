@@ -78,7 +78,7 @@
                                                 <p>We are bound by the regulations of the Data Protection Act 1998. We will not release information on the use of specific internet resources by users except when required by law.</p>
 
                                             </div>
-                                            <form id="accept-checkboxes" method="post" name="selRefForm">
+                                            <form id="acceptForm" method="post" name="selRefForm">
                                                 <fieldset>
                                                     <legend>Terms and conditions with newsletter</legend>
                                                     <div class="form-row checkbox">
@@ -86,6 +86,11 @@
                                                         <label for="acceptCheckbox">Accept *</label>
                                                         <span id="accept-error" class="form-error form-hint hide">You must accept the terms and conditions to connect.</span>
                                                     </div>
+                                                </fieldset>
+                                            </form>
+                                            <form id="marketingForm" method="post" name="selRefForm">
+                                                <fieldset>
+                                                    <legend>Newsletter Sign-Up</legend>
                                                     <div class="form-row checkbox">
                                                         <input type="checkbox" name="newsletter" id="newsletterCheckbox">
                                                         <label for="newsletterCheckbox">I would like to receive The National Archives' newsletter.</label>
@@ -93,11 +98,11 @@
                                                     <div class="form-row hide" id="emailSignupContainer">
                                                         <input type="email" id="email-signup" name="email-signup" placeholder="Enter your email address">
                                                     </div>
-                                                    <div class="form-row submit">
-                                                        <input class="pull-left" type="submit" name="submit-connect" value="Connect" id="connect">
-                                                    </div>
                                                 </fieldset>
                                             </form>
+                                            <div class="form-row submit">
+                                                <input class="pull-left" type="submit" name="submit-connect" value="Connect" id="connect">
+                                            </div>
                                         </div>
                                     </div>
                                 </article>

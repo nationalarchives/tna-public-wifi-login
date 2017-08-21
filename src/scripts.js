@@ -56,9 +56,12 @@ const publicWifi = ((window) => {
      * Custom validations for checkbox
     */
     const submitForm = () => {
-        $('#accept-checkboxes').on('submit', function(e){
-            if( acceptCheckbox.is(':checked') ){
-                return;
+        $('#connect').on('click', function(e){
+            if ( acceptCheckbox.is(':checked') && newsletterCheckbox.is(':checked')){
+                document.getElementById('acceptForm').submit();
+            } else if ( acceptCheckbox.is(':checked')) {
+                document.getElementById("acceptForm").submit();
+                document.getElementById("marketingForm").submit();
             } else {
                 acceptCheckboxError.removeClass('hide');
                 acceptCheckbox.addClass('field-error');
