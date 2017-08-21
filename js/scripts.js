@@ -59,9 +59,9 @@ var publicWifi = function (window) {
         $('#connect').on('click', function (e) {
             if (acceptCheckbox.is(':checked') && newsletterCheckbox.is(':checked')) {
                 document.getElementById('acceptForm').submit();
+                document.getElementById("marketingForm").submit();
             } else if (acceptCheckbox.is(':checked')) {
                 document.getElementById("acceptForm").submit();
-                document.getElementById("marketingForm").submit();
             } else {
                 acceptCheckboxError.removeClass('hide');
                 acceptCheckbox.addClass('field-error');
@@ -71,20 +71,22 @@ var publicWifi = function (window) {
     };
 
     /*
+    * initialize all functions
+    */
+    var init = function init() {
+        removeRequired();
+        toggleTCfunc();
+        newsLetter();
+        onClick();
+        submitForm();
+    };
+    init();
+
+    /*
      * explicitly return methods when instantiated
     */
     return {
-        required: removeRequired,
-        toggleTermsAndConditions: toggleTCfunc,
-        revealNewsletterField: newsLetter,
-        hideError: onClick,
-        submitForm: submitForm
+        init: init
     };
 }(window);
-
-publicWifi.required();
-publicWifi.toggleTermsAndConditions();
-publicWifi.revealNewsletterField();
-publicWifi.hideError();
-publicWifi.submitForm();
 //# sourceMappingURL=scripts.js.map

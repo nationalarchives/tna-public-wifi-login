@@ -56,12 +56,12 @@ const publicWifi = ((window) => {
      * Custom validations for checkbox
     */
     const submitForm = () => {
-        $('#connect').on('click', function(e){
+        $('#connect').on('click', (e) => {
             if ( acceptCheckbox.is(':checked') && newsletterCheckbox.is(':checked')){
                 document.getElementById('acceptForm').submit();
+                document.getElementById("marketingForm").submit();
             } else if ( acceptCheckbox.is(':checked')) {
                 document.getElementById("acceptForm").submit();
-                document.getElementById("marketingForm").submit();
             } else {
                 acceptCheckboxError.removeClass('hide');
                 acceptCheckbox.addClass('field-error');
@@ -71,20 +71,22 @@ const publicWifi = ((window) => {
     };
 
     /*
+    * initialize all functions
+    */
+    const init = () => {
+        removeRequired();
+        toggleTCfunc();
+        newsLetter();
+        onClick();
+        submitForm();
+    };
+    init();
+
+    /*
      * explicitly return methods when instantiated
     */
     return {
-        required : removeRequired,
-        toggleTermsAndConditions : toggleTCfunc,
-        revealNewsletterField : newsLetter,
-        hideError : onClick,
-        submitForm : submitForm
+        init : init
     };
 
 })(window);
-
-publicWifi.required();
-publicWifi.toggleTermsAndConditions();
-publicWifi.revealNewsletterField();
-publicWifi.hideError();
-publicWifi.submitForm();
