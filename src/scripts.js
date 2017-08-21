@@ -54,15 +54,17 @@ const publicWifi = ((window) => {
     /*
      * Custom validations for checkbox
     */
-    $('#accept-checkboxes').on('submit', function(e){
-        if( acceptCheckbox[0].checked ){
-            return;
-        } else {
-            acceptCheckboxError.removeClass('hide');
-            acceptCheckbox.addClass('field-error');
-            e.preventDefault();
-        }
-    });
+    const acceptValidate = () => {
+        $('#accept-checkboxes').on('submit', function(e){
+            if( acceptCheckbox[0].checked ){
+                return;
+            } else {
+                acceptCheckboxError.removeClass('hide');
+                acceptCheckbox.className += ' field-error';
+                e.preventDefault();
+            }
+        });
+    };
 
     /*
      * explicitly return methods when instantiated
@@ -71,7 +73,8 @@ const publicWifi = ((window) => {
         required : removeRequired,
         toggleTermsAndConditions : toggleTCfunc,
         revealNewsletterField : newsLetter,
-        hideError : onClick
+        hideError : onClick,
+        acceptValidate : acceptValidate
     };
 
 })(window);
@@ -80,3 +83,4 @@ publicWifi.required();
 publicWifi.toggleTermsAndConditions();
 publicWifi.revealNewsletterField();
 publicWifi.hideError();
+publicWifi.acceptValidate();
