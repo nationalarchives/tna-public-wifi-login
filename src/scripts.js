@@ -5,12 +5,10 @@ const publicWifi = ((window) => {
     //defined variables
     const   toggleTC = $('.entry-content a'),
             toggleTCDiv = $('.overflow'),
-            emailSignUpField = $('.email-signup'),
-            accept = $('#accept'),
-            newsletterField = $('#newsletter'),
+            emailSignUpField = $('#emailSignupContainer'),
+            acceptCheckbox = $('#acceptCheckbox'),
+            newsletterCheckbox = $('#newsletterCheckbox'),
             acceptCheckboxError = $('#accept-error');
-
-    //let $this = $(this);
 
     /*
      * This is to show and hide the terms and conditions
@@ -23,12 +21,11 @@ const publicWifi = ((window) => {
     };
 
     /*
-     * This is to check show and hide the email field if checked.
+     * This is to show and hide the email field if checked.
     */
     const newsLetter = () => {
-        newsletterField.on('change', () => {
-            const $this = $(this);
-            if($this[0].checked){
+        newsletterCheckbox.on('change', () => {
+            if(newsletterCheckbox[0].checked){
                 emailSignUpField.removeClass( "hide" );
             } else {
                 emailSignUpField.addClass( "hide" );
@@ -39,16 +36,16 @@ const publicWifi = ((window) => {
     /*
      * This is to remove the required attribute as we only want to use this if there is no JS.
     */
-    const removeRequired = () => { accept.removeAttr('required'); };
+    const removeRequired = () => { acceptCheckbox.removeAttr('required'); };
 
 
     /*
      * Check's if the Accept checkbox is checked and hide's the error message.
     */
     const onClick = () => {
-        accept.on("click", () => {
-            if($this[0].checked){
-                $('#accept-error').addClass('hide');
+        acceptCheckbox.on("click", () => {
+            if(acceptCheckbox[0].checked){
+                acceptCheckboxError.addClass('hide');
             }
         });
     };
@@ -58,11 +55,11 @@ const publicWifi = ((window) => {
      * Custom validations for checkbox
     */
     $('#accept-checkboxes').on('submit', function(e){
-        if( accept[0].checked ){
+        if( acceptCheckbox[0].checked ){
             return;
         } else {
-            $('#accept-error').removeClass('hide');
-            accept.addClass('field-error');
+            acceptCheckboxError.removeClass('hide');
+            acceptCheckbox.addClass('field-error');
             e.preventDefault();
         }
     });

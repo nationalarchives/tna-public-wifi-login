@@ -3,6 +3,13 @@ module.exports = function (grunt) {
     //project config
     grunt.initConfig({
         pkg:grunt.file.readJSON('package.json'),
+        uglify: {
+            target: {
+                files: {
+                    'js/scripts.min.js': 'js/scripts.js'
+                }
+            }
+        },
         eslint: {
             target: "src/scripts.js",
             options: {
@@ -43,16 +50,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        uglify: {
-            options: {
-                mangle: false
-            },
-            target: {
-                files: {
-                    'js/scripts.min.js': 'js/scripts.js'
-                }
-            }
-        },
         cssmin: {
             target: {
                 files: [{
@@ -76,5 +73,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     //Default Grunt tasks
-    grunt.registerTask('default', ['sass', 'cssmin', 'uglify', 'eslint', 'babel','watch']);
+    grunt.registerTask('default', ['eslint', 'babel', 'sass', 'cssmin', 'uglify', 'watch']);
 };

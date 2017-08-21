@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="initial-scale = 1.0" name="viewport">
-    <title>TNA Wifi Login prototype 1</title>
+    <title>The National Archives Public Wifi Login</title>
     <link rel='stylesheet' id='tna-styles-css' href='css/base-sass.min.css' type='text/css' media='all'/>
     <link rel='stylesheet' id='new-styles-css' href='css/tnaWifi.min.css' type='text/css' media='all'/>
     <link rel='stylesheet' id='tna-google-fonts-css'
@@ -82,15 +82,15 @@
                                                 <fieldset>
                                                     <legend>Terms and conditions with newsletter</legend>
                                                     <div class="form-row checkbox">
-                                                        <input type="checkbox" id="accept" name="accept" value="yes" aria-required="true" required="required">
-                                                        <label for="accept">Accept *</label>
+                                                        <input type="checkbox" id="acceptCheckbox" name="accept" value="yes" aria-required="true" required="required">
+                                                        <label for="acceptCheckbox">Accept *</label>
                                                         <span id="accept-error" class="form-error form-hint hide">You must accept the terms and conditions to connect.</span>
                                                     </div>
                                                     <div class="form-row checkbox">
-                                                        <input type="checkbox" name="newsletter" id="newsletter">
-                                                        <label for="newsletter">I would like to receive The National Archives' newsletter.</label>
+                                                        <input type="checkbox" name="newsletter" id="newsletterCheckbox">
+                                                        <label for="newsletterCheckbox">I would like to receive The National Archives' newsletter.</label>
                                                     </div>
-                                                    <div class="form-row email-signup hide">
+                                                    <div class="form-row hide" id="emailSignupContainer">
                                                         <input type="email" id="email-signup" name="email-signup" placeholder="Enter your email address">
                                                     </div>
                                                     <div class="form-row submit">
