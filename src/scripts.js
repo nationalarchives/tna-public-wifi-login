@@ -6,6 +6,7 @@ const publicWifi = ((window) => {
     const   toggleTC = $('.entry-content a'),
             toggleTCDiv = $('#tAndC'),
             emailSignUpFieldContainer = $('#emailSignUpContainer'),
+            emailField = $('#email-signup'),
             emailError = $('#emailError'),
             acceptCheckbox = $('#acceptCheckbox'),
             newsletterCheckbox = $('#newsletterCheckbox'),
@@ -58,10 +59,11 @@ const publicWifi = ((window) => {
      * Email validation function
     */
     const emailValidation = () => {
-        let email = document.forms["marketingForm"]["email-signup"].value;
-        let atpos = email.indexOf("@");
-        let dotpos = email.lastIndexOf(".");
-        if (atpos < 1 || dotpos<atpos + 2 || dotpos + 2 >= email.length) {
+        let email = document.forms["marketingForm"]["email-signup"].value,
+            atPos = email.indexOf("@"),
+            dotPos = email.lastIndexOf("."),
+            spaceCount = (email.split(" ").length - 1);
+        if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= email.length || spaceCount > 0) {
             emailError.removeClass('hide');
         } else {
             emailError.addClass('hide');
@@ -72,7 +74,7 @@ const publicWifi = ((window) => {
     /*
      * Checks for email on change
     */
-    let onChangeValidateEmail = () => { $('#email-signup').on( 'change', function () { emailValidation(); }); };
+    let onChangeValidateEmail = () => { emailField.on( 'change', function () { emailValidation(); }); };
 
 
     /*
@@ -85,7 +87,7 @@ const publicWifi = ((window) => {
                 document.getElementById("marketingForm").submit();
             } else if ( acceptCheckbox.is(':checked')) {
                 document.getElementById("acceptForm").submit();
-            } else if ( newsletterCheckbox.is(':checked') && $('#email-signup').val() === '' && !acceptCheckbox[0].checked ){
+            } else if ( newsletterCheckbox.is(':checked') && emailField.val() === '' && !acceptCheckbox[0].checked ){
                 acceptCheckboxError.removeClass('hide');
                 acceptCheckbox.addClass('field-error');
                 emailValidation();
@@ -110,12 +112,5 @@ const publicWifi = ((window) => {
         submitForm();
     };
     init();
-
-    /*
-     * explicitly return methods when instantiated
-    */
-    return {
-        init : init
-    };
 
 })(window);
