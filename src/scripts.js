@@ -6,7 +6,7 @@ const publicWifi = ((window) => {
     const   toggleTC = $('.entry-content a'),
             toggleTCDiv = $('#tAndC'),
             emailSignUpFieldContainer = $('#emailSignUpContainer'),
-            emailField = $('#email-signup'),
+            emailField = $('#emailSignUp'),
             emailError = $('#emailError'),
             acceptCheckbox = $('#acceptCheckbox'),
             newsletterCheckbox = $('#newsletterCheckbox'),
@@ -52,6 +52,11 @@ const publicWifi = ((window) => {
                 acceptCheckbox.removeAttr('class');
             }
         });
+        newsletterCheckbox.on("click",() => {
+           if(!newsletterCheckbox[0].checked) {
+               emailError.addClass('hide');
+           }
+        });
     };
 
 
@@ -80,24 +85,53 @@ const publicWifi = ((window) => {
     /*
      * Submit the forms
     */
+    // const submitForm = () => {
+    //     $('#connect').on('click', (e) => {
+    //         if ( acceptCheckbox[0].checked ){
+    //             document.getElementById('acceptForm').submit();
+    //             if ( newsletterCheckbox[0].checked  ) {
+    //                 document.getElementById("marketingForm").submit();
+    //             }
+    //         } else if ( acceptCheckbox.is(':checked')) {
+    //             document.getElementById("acceptForm").submit();
+    //         } else if ( newsletterCheckbox.is(':checked') && emailField.val() === '' && !acceptCheckbox[0].checked ){
+    //             acceptCheckboxError.removeClass('hide');
+    //             acceptCheckbox.addClass('field-error');
+    //             emailValidation();
+    //         }else if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && emailField.val() === '' ) {
+    //             e.preventDefault();
+    //             emailValidation();
+    //         }else {
+    //             acceptCheckboxError.removeClass('hide');
+    //             acceptCheckbox.addClass('field-error');
+    //             e.preventDefault();
+    //         }
+    //     });
+    // };
+
+    /*
+    * Function that submits both forms.
+    */
+    const submitBothForms = () => { $('form').each(() => { $(this).submit(); }); };
+
     const submitForm = () => {
-        $('#connect').on('click', (e) => {
-            if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked){
-                document.getElementById('acceptForm').submit();
-                document.getElementById("marketingForm").submit();
-            } else if ( acceptCheckbox.is(':checked')) {
-                document.getElementById("acceptForm").submit();
-            } else if ( newsletterCheckbox.is(':checked') && emailField.val() === '' && !acceptCheckbox[0].checked ){
-                acceptCheckboxError.removeClass('hide');
-                acceptCheckbox.addClass('field-error');
-                emailValidation();
-            }else {
-                acceptCheckboxError.removeClass('hide');
-                acceptCheckbox.addClass('field-error');
-                e.preventDefault();
-            }
-        });
+      $('#connect').on('click', (e) => {
+          if ( !acceptCheckbox[0].checked && newsletterCheckbox[0].checked && emailField.val().length > 1 ) {
+              acceptCheckboxError.removeClass('hide');
+              acceptCheckbox.addClass('field-error');
+              emailValidation();
+              e.preventDefault();
+              console.log('Found you again');
+          } else if ( acceptCheckbox[0].checked && !newsletterCheckbox[0].checked ) {
+              document.getElementById('acceptForm').submit();
+          } else if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && $('#emailSignUp').val().length === 0 ) {
+              return false;
+          } else {
+              acceptCheckboxError.removeClass('hide');
+          }
+      });
     };
+
 
 
     /*

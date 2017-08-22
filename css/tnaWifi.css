@@ -62,7 +62,7 @@ legend {
   outline: 3px solid #EBAB2C;
   outline-offset: -2px; }
 
-#email-signup, #connect {
+#emailSignUp, #connect {
   margin-left: 1em; }
 
 @media (max-width: 1024px) {
