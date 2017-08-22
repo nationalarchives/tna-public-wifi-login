@@ -88,15 +88,16 @@
                                                     </div>
                                                 </fieldset>
                                             </form>
-                                            <form id="marketingForm" method="post" name="selRefForm">
+                                            <form name="marketingForm" id="marketingForm" method="post" name="selRefForm">
                                                 <fieldset>
                                                     <legend>Newsletter Sign-Up</legend>
                                                     <div class="form-row checkbox">
                                                         <input type="checkbox" name="newsletter" id="newsletterCheckbox">
                                                         <label for="newsletterCheckbox">I would like to receive The National Archives' newsletter.</label>
                                                     </div>
-                                                    <div class="form-row hide" id="emailSignupContainer">
+                                                    <div class="form-row hide" id="emailSignUpContainer">
                                                         <input type="email" id="email-signup" name="email-signup" placeholder="Enter your email address">
+                                                        <span id="emailError" class="form-error form-hint hide">Please enter a valid email</span>
                                                     </div>
                                                 </fieldset>
                                             </form>

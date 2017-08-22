@@ -5,7 +5,8 @@ const publicWifi = ((window) => {
     //defined variables
     const   toggleTC = $('.entry-content a'),
             toggleTCDiv = $('#tAndC'),
-            emailSignUpField = $('#emailSignupContainer'),
+            emailSignUpFieldContainer = $('#emailSignUpContainer'),
+            emailError = $('#emailError'),
             acceptCheckbox = $('#acceptCheckbox'),
             newsletterCheckbox = $('#newsletterCheckbox'),
             acceptCheckboxError = $('#accept-error');
@@ -20,32 +21,18 @@ const publicWifi = ((window) => {
         });
     };
 
+
     /*
      * This is to show and hide the email field if checked.
     */
     const newsLetter = () => {
         newsletterCheckbox.on('change', () => {
             if(newsletterCheckbox[0].checked){
-                emailSignUpField.removeClass( "hide" );
+                emailSignUpFieldContainer.removeClass( "hide" );
             } else {
-                emailSignUpField.addClass( "hide" );
+                emailSignUpFieldContainer.addClass( "hide" );
             }
         });
-    };
-
-    /*
-     * Validate email
-    */
-    /*const validEmail = (email) => {
-        var reGex = /\S+@\S+\.\S+/;
-        return reGex.test(email);
-    };*/
-
-    const checkField = () => {
-        let emailField= $('#email-signup').val().length;
-        if (emailField > 1) {
-            console.log('field is empty');
-        }
     };
 
     /*
@@ -68,16 +55,41 @@ const publicWifi = ((window) => {
 
 
     /*
+     * Email validation function
+    */
+    const emailValidation = () => {
+        let email = document.forms["marketingForm"]["email-signup"].value;
+        let atpos = email.indexOf("@");
+        let dotpos = email.lastIndexOf(".");
+        if (atpos < 1 || dotpos<atpos + 2 || dotpos + 2 >= email.length) {
+            emailError.removeClass('hide');
+        } else {
+            emailError.addClass('hide');
+        }
+    };
+
+
+    /*
+     * Checks for email on change
+    */
+    let onChangeValidateEmail = () => { $('#email-signup').on( 'change', function () { emailValidation(); }); };
+
+
+    /*
      * Submit the forms
     */
     const submitForm = () => {
         $('#connect').on('click', (e) => {
-            if ( acceptCheckbox.is(':checked') && newsletterCheckbox.is(':checked')){
+            if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked){
                 document.getElementById('acceptForm').submit();
                 document.getElementById("marketingForm").submit();
             } else if ( acceptCheckbox.is(':checked')) {
                 document.getElementById("acceptForm").submit();
-            } else {
+            } else if ( newsletterCheckbox.is(':checked') && $('#email-signup').val() === '' && !acceptCheckbox[0].checked ){
+                acceptCheckboxError.removeClass('hide');
+                acceptCheckbox.addClass('field-error');
+                emailValidation();
+            }else {
                 acceptCheckboxError.removeClass('hide');
                 acceptCheckbox.addClass('field-error');
                 e.preventDefault();
@@ -85,9 +97,6 @@ const publicWifi = ((window) => {
         });
     };
 
-    const stuff = () => {
-      console.log('Hello');
-    };
 
     /*
     * initialize all functions
@@ -95,11 +104,10 @@ const publicWifi = ((window) => {
     const init = () => {
         removeRequired();
         toggleTCfunc();
-        checkField();
+        onChangeValidateEmail();
         newsLetter();
         onClick();
         submitForm();
-        //stuff();
     };
     init();
 

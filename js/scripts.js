@@ -5,7 +5,8 @@ var publicWifi = function (window) {
     //defined variables
     var toggleTC = $('.entry-content a'),
         toggleTCDiv = $('#tAndC'),
-        emailSignUpField = $('#emailSignupContainer'),
+        emailSignUpFieldContainer = $('#emailSignUpContainer'),
+        emailError = $('#emailError'),
         acceptCheckbox = $('#acceptCheckbox'),
         newsletterCheckbox = $('#newsletterCheckbox'),
         acceptCheckboxError = $('#accept-error');
@@ -26,26 +27,11 @@ var publicWifi = function (window) {
     var newsLetter = function newsLetter() {
         newsletterCheckbox.on('change', function () {
             if (newsletterCheckbox[0].checked) {
-                emailSignUpField.removeClass("hide");
+                emailSignUpFieldContainer.removeClass("hide");
             } else {
-                emailSignUpField.addClass("hide");
+                emailSignUpFieldContainer.addClass("hide");
             }
         });
-    };
-
-    /*
-     * Validate email
-    */
-    /*const validEmail = (email) => {
-        var reGex = /\S+@\S+\.\S+/;
-        return reGex.test(email);
-    };*/
-
-    var checkField = function checkField() {
-        var emailField = $('#email-signup').val().length;
-        if (emailField > 1) {
-            console.log('field is empty');
-        }
     };
 
     /*
@@ -68,15 +54,42 @@ var publicWifi = function (window) {
     };
 
     /*
+     * Email validation function
+    */
+    var emailValidation = function emailValidation() {
+        var email = document.forms["marketingForm"]["email-signup"].value;
+        var atpos = email.indexOf("@");
+        var dotpos = email.lastIndexOf(".");
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length) {
+            emailError.removeClass('hide');
+        } else {
+            emailError.addClass('hide');
+        }
+    };
+
+    /*
+     * Checks for email on change
+    */
+    var onChangeValidateEmail = function onChangeValidateEmail() {
+        $('#email-signup').on('change', function () {
+            emailValidation();
+        });
+    };
+
+    /*
      * Submit the forms
     */
     var submitForm = function submitForm() {
         $('#connect').on('click', function (e) {
-            if (acceptCheckbox.is(':checked') && newsletterCheckbox.is(':checked')) {
+            if (acceptCheckbox[0].checked && newsletterCheckbox[0].checked) {
                 document.getElementById('acceptForm').submit();
                 document.getElementById("marketingForm").submit();
             } else if (acceptCheckbox.is(':checked')) {
                 document.getElementById("acceptForm").submit();
+            } else if (newsletterCheckbox.is(':checked') && $('#email-signup').val() === '' && !acceptCheckbox[0].checked) {
+                acceptCheckboxError.removeClass('hide');
+                acceptCheckbox.addClass('field-error');
+                emailValidation();
             } else {
                 acceptCheckboxError.removeClass('hide');
                 acceptCheckbox.addClass('field-error');
@@ -85,21 +98,16 @@ var publicWifi = function (window) {
         });
     };
 
-    var stuff = function stuff() {
-        console.log('Hello');
-    };
-
     /*
     * initialize all functions
     */
     var init = function init() {
         removeRequired();
         toggleTCfunc();
-        checkField();
+        onChangeValidateEmail();
         newsLetter();
         onClick();
         submitForm();
-        //stuff();
     };
     init();
 
