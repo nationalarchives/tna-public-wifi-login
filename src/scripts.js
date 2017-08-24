@@ -1,16 +1,16 @@
 'use strict';
 
-const publicWifi = ((window) => {
+const publicWifi = (() => {
 
     //defined variables
-    const   toggleTC = $('.entry-content a'),
-            toggleTCDiv = $('#tAndC'),
-            emailSignUpFieldContainer = $('#emailSignUpContainer'),
-            emailField = $('#emailSignUp'),
-            emailError = $('#emailError'),
-            acceptCheckbox = $('#acceptCheckbox'),
-            newsletterCheckbox = $('#newsletterCheckbox'),
-            acceptCheckboxError = $('#accept-error');
+    const toggleTC = $('.entry-content a'),
+        toggleTCDiv = $('#tAndC'),
+        emailSignUpFieldContainer = $('#emailSignUpContainer'),
+        emailField = $('#emailSignUp'),
+        emailError = $('#emailError'),
+        acceptCheckbox = $('#acceptCheckbox'),
+        newsletterCheckbox = $('#newsletterCheckbox'),
+        acceptCheckboxError = $('#accept-error');
 
     /*
      * This is to show and hide the terms and conditions
@@ -28,10 +28,10 @@ const publicWifi = ((window) => {
     */
     const newsLetter = () => {
         newsletterCheckbox.on('change', () => {
-            if(newsletterCheckbox[0].checked){
-                emailSignUpFieldContainer.removeClass( "hide" );
+            if (newsletterCheckbox[0].checked) {
+                emailSignUpFieldContainer.removeClass("hide");
             } else {
-                emailSignUpFieldContainer.addClass( "hide" );
+                emailSignUpFieldContainer.addClass("hide");
             }
         });
     };
@@ -47,17 +47,19 @@ const publicWifi = ((window) => {
     */
     const onClick = () => {
         acceptCheckbox.on("click", () => {
-            if(acceptCheckbox[0].checked){
+            if (acceptCheckbox[0].checked) {
                 acceptCheckboxError.addClass('hide');
                 acceptCheckbox.removeAttr('class');
             }
         });
-        newsletterCheckbox.on("click",() => {
-           if(!newsletterCheckbox[0].checked) {
-               emailError.addClass('hide');
-           }
-        });
     };
+
+
+    /*
+     * Checks for email on change
+    */
+    let onChangeValidateEmail = () => { emailField.on('change', function () { emailValidation(); }); };
+
 
 
     /*
@@ -75,63 +77,45 @@ const publicWifi = ((window) => {
         }
     };
 
-
-    /*
-     * Checks for email on change
-    */
-    let onChangeValidateEmail = () => { emailField.on( 'change', function () { emailValidation(); }); };
-
-
-    /*
-     * Submit the forms
-    */
-    // const submitForm = () => {
-    //     $('#connect').on('click', (e) => {
-    //         if ( acceptCheckbox[0].checked ){
-    //             document.getElementById('acceptForm').submit();
-    //             if ( newsletterCheckbox[0].checked  ) {
-    //                 document.getElementById("marketingForm").submit();
-    //             }
-    //         } else if ( acceptCheckbox.is(':checked')) {
-    //             document.getElementById("acceptForm").submit();
-    //         } else if ( newsletterCheckbox.is(':checked') && emailField.val() === '' && !acceptCheckbox[0].checked ){
-    //             acceptCheckboxError.removeClass('hide');
-    //             acceptCheckbox.addClass('field-error');
-    //             emailValidation();
-    //         }else if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && emailField.val() === '' ) {
-    //             e.preventDefault();
-    //             emailValidation();
-    //         }else {
-    //             acceptCheckboxError.removeClass('hide');
-    //             acceptCheckbox.addClass('field-error');
-    //             e.preventDefault();
-    //         }
-    //     });
-    // };
-
-    /*
-    * Function that submits both forms.
-    */
-    const submitBothForms = () => { $('form').each(() => { $(this).submit(); }); };
-
-    const submitForm = () => {
-      $('#connect').on('click', (e) => {
-          if ( !acceptCheckbox[0].checked && newsletterCheckbox[0].checked && emailField.val().length > 1 ) {
-              acceptCheckboxError.removeClass('hide');
-              acceptCheckbox.addClass('field-error');
-              emailValidation();
-              e.preventDefault();
-              console.log('Found you again');
-          } else if ( acceptCheckbox[0].checked && !newsletterCheckbox[0].checked ) {
-              document.getElementById('acceptForm').submit();
-          } else if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && $('#emailSignUp').val().length === 0 ) {
-              return false;
-          } else {
-              acceptCheckboxError.removeClass('hide');
-          }
-      });
+    let addRequireEmail = function() {
+        newsletterCheckbox.on('click', function() {
+            if ( $(this)[0].checked ) {
+                emailField.attr('required','required');
+                console.log('Required added');
+            }
+        });
     };
 
+
+    /*
+    * Form submit.
+    */
+    let submitForm = () => {
+        $('#connect').on('click', () => {
+            if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && !emailError.hasClass('hide') ) {
+                console.log('All is checked but there is an error in the email field, so the form will not be submitted');
+                emailValidation();
+                return false;
+            }
+            if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && emailField.val().length > 1 && emailError.hasClass('hide')) {
+                console.log('All is valid, and both forms submitted');
+            }
+            if ( acceptCheckbox[0].checked && !newsletterCheckbox[0].checked ) {
+                console.log( 'Only accept form submitted' );
+            }
+            if ( !acceptCheckbox[0].checked ) {
+                console.log( 'Form will not be submitted' );
+                acceptCheckboxError.removeClass('hide');
+            }
+            if ( newsletterCheckbox[0].checked && !acceptCheckbox[0].checked ) {
+                emailValidation();
+            }
+            if ( !emailError.hasClass('hide') ) {
+                console.log( 'There is an error in the email field' );
+                return false;
+            }
+        });
+    };
 
 
     /*
@@ -140,6 +124,7 @@ const publicWifi = ((window) => {
     const init = () => {
         removeRequired();
         toggleTCfunc();
+        addRequireEmail();
         onChangeValidateEmail();
         newsLetter();
         onClick();
@@ -147,4 +132,4 @@ const publicWifi = ((window) => {
     };
     init();
 
-})(window);
+})();
