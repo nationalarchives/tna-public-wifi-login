@@ -13,13 +13,13 @@
 </head>
 
 <body class="home page">
-<header id="header" role="banner">
+<header id="header">
     <a id="skip-to-main-content" href="#">Skip to Main Content</a>
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12" id="logo-holder">
                 <a href="#" title="Go to The National Archives homepage" class="visible-lg visible-md visible-sm" tabindex="5">
-                    <img src="../img/logo-white.png" alt="The National Archives" class="img-responsive">
+                    <img src="/img/logo-white.png" alt="The National Archives" class="img-responsive">
                 </a>
             </div>
         </div>
@@ -28,7 +28,7 @@
 <div id="primary" class="content-area">
     <div class="container">
         <div class="row">
-            <main role="main" class="col-xs-12 col-sm-8 col-md-8">
+            <main class="col-xs-12 col-sm-8 col-md-8">
                 <div class="body_spacing">
                     <div class="container">
                         <div class="row">
@@ -78,17 +78,7 @@
                                                 <p>We are bound by the regulations of the Data Protection Act 1998. We will not release information on the use of specific internet resources by users except when required by law.</p>
 
                                             </div>
-                                            <form id="acceptForm" method="post" name="selRefForm">
-                                                <fieldset>
-                                                    <legend>Terms and conditions with newsletter</legend>
-                                                    <div class="form-row checkbox">
-                                                        <input type="checkbox" id="acceptCheckbox" name="accept" value="yes" aria-required="true" required="required">
-                                                        <label for="acceptCheckbox">Accept *</label>
-                                                        <span id="accept-error" class="form-error form-hint hide">Please tick this box to accept the terms and conditions and connect.</span>
-                                                    </div>
-                                                </fieldset>
-                                            </form>
-                                            <form name="marketingForm" id="marketingForm" method="post" name="selRefForm">
+                                            <form name="marketingForm" id="marketingForm" method="post">
                                                 <fieldset>
                                                     <legend>Newsletter Sign-Up</legend>
                                                     <div class="form-row checkbox">
@@ -101,9 +91,19 @@
                                                     </div>
                                                 </fieldset>
                                             </form>
-                                            <div class="form-row submit">
-                                                <input class="pull-left" type="submit" name="submit-connect" value="Connect" id="connect">
-                                            </div>
+                                            <form id="acceptForm" method="post" name="acceptForm">
+                                                <fieldset>
+                                                    <legend>Terms and conditions with newsletter</legend>
+                                                    <div class="form-row checkbox">
+                                                        <input type="checkbox" id="acceptCheckbox" name="accept" value="yes" aria-required="true" required="required">
+                                                        <label for="acceptCheckbox">Accept *</label>
+                                                        <span id="acceptError" class="form-error form-hint hide">Please tick this box to accept the terms and conditions and connect.</span>
+                                                    </div>
+                                                    <div class="form-row submit">
+                                                        <input class="pull-left" type="submit" name="submit-connect" value="Connect" id="connect" form="acceptForm">
+                                                    </div>
+                                                </fieldset>
+                                            </form>
                                         </div>
                                     </div>
                                 </article>

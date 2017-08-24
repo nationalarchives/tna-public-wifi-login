@@ -1,138 +1,47 @@
 'use strict';
 
-const publicWifi = (() => {
+let $acceptCheckbox = $('#acceptCheckbox'),
+    $acceptForm = $('#acceptForm'),
+    $newsletterCheckbox = $('#newsletterCheckbox'),
+    $emailField = $('#emailSignUp'),
+    $emailError = $('#emailError'),
+    $emailContainer = $('#emailSignUpContainer'),
+    $tAndCToggle = $('#toggleTC'),
+    $tAndCContent = $('#tAndC'),
+    $acceptError = $('#acceptError');
 
-    //defined variables
-    const toggleTC = $('.entry-content a'),
-        toggleTCDiv = $('#tAndC'),
-        emailSignUpFieldContainer = $('#emailSignUpContainer'),
-        emailField = $('#emailSignUp'),
-        emailError = $('#emailError'),
-        acceptCheckbox = $('#acceptCheckbox'),
-        newsletterCheckbox = $('#newsletterCheckbox'),
-        acceptCheckboxError = $('#accept-error');
+$acceptCheckbox.removeAttr('required');
 
-    /*
-     * This is to show and hide the terms and conditions
-    */
-    const toggleTCfunc = () => {
-        toggleTC.on('click', (e) => {
-            e.preventDefault();
-            toggleTCDiv.toggleClass('hide');
-        });
-    };
+$tAndCToggle.on('click', (e) => { $tAndCContent.toggleClass('hide'); e.preventDefault(); });
 
+$acceptForm.on('submit', (e) => {
+    if ( !$acceptCheckbox.is(':checked') ) {
+        console.log('Form cannot be submitted');
+        $acceptError.removeClass('hide');
+        e.preventDefault();
+    }
+    if ( $newsletterCheckbox.is(':checked') && $emailField.val().length < 1 || !$emailError.hasClass('hide') ) {
+        $emailField.attr('required', 'required');
+        e.preventDefault();
+        $emailError.removeClass('hide');
+        console.log( 'Form will not be submitted' );
+    }
+});
 
-    /*
-     * This is to show and hide the email field if checked.
-    */
-    const newsLetter = () => {
-        newsletterCheckbox.on('change', () => {
-            if (newsletterCheckbox[0].checked) {
-                emailSignUpFieldContainer.removeClass("hide");
-            } else {
-                emailSignUpFieldContainer.addClass("hide");
-            }
-        });
-    };
+$newsletterCheckbox.on('change', () => { $emailContainer.toggleClass('hide'); $emailField.attr('required', 'required'); $emailError.addClass('hide'); });
 
-    /*
-     * This is to remove the required attribute as we only want to use this if there is no JS.
-    */
-    const removeRequired = () => { acceptCheckbox.removeAttr('required'); };
+$acceptCheckbox.on('change', () => { $acceptError.addClass('hide'); });
 
+$emailField.on('change', () => { return emailValidation(); });
 
-    /*
-     * Check's if the Accept checkbox is checked and hide's the error message.
-    */
-    const onClick = () => {
-        acceptCheckbox.on("click", () => {
-            if (acceptCheckbox[0].checked) {
-                acceptCheckboxError.addClass('hide');
-                acceptCheckbox.removeAttr('class');
-            }
-        });
-    };
-
-
-    /*
-     * Checks for email on change
-    */
-    let onChangeValidateEmail = () => { emailField.on('change', function () { emailValidation(); }); };
-
-
-    /*
-     * Email validation function
-    */
-    const emailValidation = () => {
-        let email = document.forms["marketingForm"]["email-signup"].value,
-            atPos = email.indexOf("@"),
-            dotPos = email.lastIndexOf("."),
-            spaceCount = (email.split(" ").length - 1);
-        if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= email.length || spaceCount > 0) {
-            emailError.removeClass('hide');
-        } else {
-            emailError.addClass('hide');
-        }
-    };
-
-    let addRequireEmail = function() {
-        newsletterCheckbox.on('click', function() {
-            if ( $(this)[0].checked ) {
-                emailField.attr('required','required');
-                console.log('Required added');
-            }
-        });
-    };
-
-
-    /*
-    * Form submit.
-    */
-    let submitForm = () => {
-        $('#connect').on('click', () => {
-            if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && !emailError.hasClass('hide') ) {
-                console.log('All is checked but there is an error in the email field, so the form will not be submitted');
-                emailValidation();
-                return false;
-            }
-            if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && emailField.val().length > 1 && emailError.hasClass('hide')) {
-                console.log('All is valid, and both forms submitted');
-                alert('All is valid, and both forms submitted');
-                return false;
-            }
-            if ( acceptCheckbox[0].checked && !newsletterCheckbox[0].checked ) {
-                console.log( 'Only accept form submitted' );
-                alert('Only accept form submitted, and you are not signed up to the newsletter');
-                return false;
-            }
-            if ( !acceptCheckbox[0].checked ) {
-                console.log( 'Form will not be submitted' );
-                acceptCheckboxError.removeClass('hide');
-            }
-            if ( newsletterCheckbox[0].checked && !acceptCheckbox[0].checked ) {
-                emailValidation();
-            }
-            if ( !emailError.hasClass('hide') ) {
-                console.log( 'There is an error in the email field' );
-                return false;
-            }
-        });
-    };
-
-
-    /*
-    * initialize all functions
-    */
-    const init = () => {
-        removeRequired();
-        toggleTCfunc();
-        addRequireEmail();
-        onChangeValidateEmail();
-        newsLetter();
-        onClick();
-        submitForm();
-    };
-    init();
-
-})();
+let emailValidation = () => {
+    let email = document.forms["marketingForm"]["email-signup"].value,
+        atPos = email.indexOf("@"),
+        dotPos = email.lastIndexOf("."),
+        spaceCount = (email.split(" ").length - 1);
+    if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= email.length || spaceCount > 0) {
+        $emailError.removeClass('hide');
+    } else {
+        $emailError.addClass('hide');
+    }
+};
