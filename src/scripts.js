@@ -61,7 +61,6 @@ const publicWifi = (() => {
     let onChangeValidateEmail = () => { emailField.on('change', function () { emailValidation(); }); };
 
 
-
     /*
      * Email validation function
     */
@@ -99,9 +98,13 @@ const publicWifi = (() => {
             }
             if ( acceptCheckbox[0].checked && newsletterCheckbox[0].checked && emailField.val().length > 1 && emailError.hasClass('hide')) {
                 console.log('All is valid, and both forms submitted');
+                alert('All is valid, and both forms submitted');
+                return false;
             }
             if ( acceptCheckbox[0].checked && !newsletterCheckbox[0].checked ) {
                 console.log( 'Only accept form submitted' );
+                alert('Only accept form submitted, and you are not signed up to the newsletter');
+                return false;
             }
             if ( !acceptCheckbox[0].checked ) {
                 console.log( 'Form will not be submitted' );
