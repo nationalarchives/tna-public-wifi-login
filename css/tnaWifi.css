@@ -1,6 +1,21 @@
 /*
  * Styles for Public Wifi Login
  */
+@font-face {
+  font-family: bitter-local;
+  src: url("/fonts/Bitter-Regular.otf") format("opentype"); }
+@font-face {
+  font-family: bitter-italic-local;
+  src: url("/fonts/Bitter-Italic.otf") format("opentype"); }
+@font-face {
+  font-family: open-sans-local;
+  src: url("/fonts/OpenSans-Regular.ttf") format("truetype"); }
+h1, h2, h3, h4 {
+  font-family: bitter-local, arial, sans-serif; }
+
+p, label, form input[type="submit"] {
+  font-family: "open-sans-local", arial, sans-serif; }
+
 .entry-content a {
   cursor: pointer; }
 

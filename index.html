@@ -7,9 +7,6 @@
     <title>The National Archives Public Wifi Login</title>
     <link rel='stylesheet' id='tna-styles-css' href='css/base-sass.min.css' type='text/css' media='all'/>
     <link rel='stylesheet' id='new-styles-css' href='css/tnaWifi.min.css' type='text/css' media='all'/>
-    <link rel='stylesheet' id='tna-google-fonts-css'
-          href='https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C700%2C400italic%2C700italic%7CBitter&#038;ver=4.4.1'
-          type='text/css' media='all'/>
 </head>
 
 <body class="home page">
@@ -78,7 +75,7 @@
                                                 <p>We are bound by the regulations of the Data Protection Act 1998. We will not release information on the use of specific internet resources by users except when required by law.</p>
 
                                             </div>
-                                            <form name="marketingForm" id="marketingForm" method="post">
+                                            <form name="marketingForm" id="marketingForm" method="post" role="form">
                                                 <fieldset>
                                                     <legend>Newsletter Sign-Up</legend>
                                                     <div class="form-row checkbox">
@@ -91,7 +88,7 @@
                                                     </div>
                                                 </fieldset>
                                             </form>
-                                            <form id="acceptForm" method="post" name="acceptForm">
+                                            <form id="acceptForm" method="post" name="selRegForm" action="CreateAccount.action?from=SELF_REGISTRATION" data-ajax="true" role="form">
                                                 <fieldset>
                                                     <legend>Terms and conditions with newsletter</legend>
                                                     <div class="form-row checkbox">
@@ -115,7 +112,7 @@
         </div>
     </div>
 </div>
-<script src="js/lib/jquery-3.2.1.slim.min.js" type="text/javascript"></script>
+<script src="js/lib/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/scripts.min.js"></script>
 </body>
 </html>

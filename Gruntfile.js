@@ -27,7 +27,7 @@ module.exports = function (grunt) {
             }
         },
         qunit: {
-            all: ['tests/**/*.html']
+            all: ['js/tests/**/*.html']
         },
         watch: {
             scripts: {
