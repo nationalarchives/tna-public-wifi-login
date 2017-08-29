@@ -34,9 +34,10 @@ p, label, form input[type="submit"] {
 .form-row {
   max-width: 92%;
   margin: 0 auto 1.5em; }
-
-.form-row label {
-  cursor: pointer; }
+  .form-row label {
+    cursor: pointer; }
+  .form-row .optional {
+    color: #6f777b; }
 
 legend {
   display: none; }

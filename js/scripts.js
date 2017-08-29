@@ -17,27 +17,6 @@ $(function () {
         $tAndCContent.toggleClass('hide');e.preventDefault();
     });
 
-    $acceptForm.on('submit', function (e) {
-        if (!$acceptCheckbox.is(':checked')) {
-            console.log('Form cannot be submitted');
-            $acceptError.removeClass('hide');
-            e.preventDefault();
-        } else if ($newsletterCheckbox.is(':checked') && $emailField.val().length < 1 || !$emailError.hasClass('hide')) {
-            $emailField.attr('required', 'required');
-            e.preventDefault();
-            $emailError.removeClass('hide');
-            console.log('Form will not be submitted');
-        } else if ($acceptCheckbox.is(':checked') && $newsletterCheckbox.is(':checked') && $emailError.hasClass('hide')) {
-            e.preventDefault();
-            return sendBothForms();
-            //return false;
-        } else {
-            console.log('Only Accept form is submitted');
-            submitForm('CreateAccount.action?from=SELF_REGISTRATION', $acceptForm);
-            return false;
-        }
-    });
-
     $newsletterCheckbox.on('change', function () {
         $emailContainer.toggleClass('hide');$emailField.attr('required', 'required');$emailError.addClass('hide');
     });
@@ -48,6 +27,27 @@ $(function () {
 
     $emailField.on('change', function () {
         return emailValidation();
+    });
+
+    $acceptForm.on('submit', function (e) {
+        if (!$acceptCheckbox.is(':checked')) {
+            console.log('Form cannot be submitted');
+            $acceptError.removeClass('hide');
+            emailValidation();
+            e.preventDefault();
+        } else if ($newsletterCheckbox.is(':checked') && $emailField.val().length < 1 || !$emailError.hasClass('hide')) {
+            $emailField.attr('required', 'required');
+            e.preventDefault();
+            emailValidation();
+            console.log('Form will not be submitted');
+        } else if ($acceptCheckbox.is(':checked') && $newsletterCheckbox.is(':checked') && $emailError.hasClass('hide')) {
+            console.log('Both forms have been submitted');
+            e.preventDefault();
+        } else {
+            console.log('Only Accept form is submitted');
+            submitForm('CreateAccount.action?from=SELF_REGISTRATION', $acceptForm);
+            return false;
+        }
     });
 
     var emailValidation = function emailValidation() {
@@ -63,12 +63,13 @@ $(function () {
     };
 
     var submitForm = function submitForm(url, data) {
-        return $.ajax({
-            type: "GET",
+        $.ajax({
+            type: "POST",
             url: url,
             data: data.serialize(),
-            success: console.log('Sent Ajax Form')
+            success: alert('Sent Ajax Form')
         });
+        return false;
     };
 });
 //# sourceMappingURL=scripts.js.map

@@ -15,32 +15,32 @@ $(function() {
 
     $tAndCToggle.on('click', (e) => { $tAndCContent.toggleClass('hide'); e.preventDefault(); });
 
+    $newsletterCheckbox.on('change', () => { $emailContainer.toggleClass('hide'); $emailField.attr('required', 'required'); $emailError.addClass('hide'); });
+
+    $acceptCheckbox.on('change', () => { $acceptError.addClass('hide'); });
+
+    $emailField.on('change', () => { return emailValidation(); });
+
     $acceptForm.on('submit', (e) => {
         if ( !$acceptCheckbox.is(':checked') ) {
             console.log('Form cannot be submitted');
             $acceptError.removeClass('hide');
+            emailValidation();
             e.preventDefault();
         } else if ( $newsletterCheckbox.is(':checked') && $emailField.val().length < 1 || !$emailError.hasClass('hide') ) {
             $emailField.attr('required', 'required');
             e.preventDefault();
-            $emailError.removeClass('hide');
+            emailValidation();
             console.log( 'Form will not be submitted' );
         } else if ( $acceptCheckbox.is(':checked') && $newsletterCheckbox.is(':checked') && $emailError.hasClass('hide') ) {
+            console.log('Both forms have been submitted');
             e.preventDefault();
-            return sendBothForms();
-            //return false;
         } else {
             console.log('Only Accept form is submitted');
             submitForm('CreateAccount.action?from=SELF_REGISTRATION', $acceptForm);
             return false;
         }
     });
-
-    $newsletterCheckbox.on('change', () => { $emailContainer.toggleClass('hide'); $emailField.attr('required', 'required'); $emailError.addClass('hide'); });
-
-    $acceptCheckbox.on('change', () => { $acceptError.addClass('hide'); });
-
-    $emailField.on('change', () => { return emailValidation(); });
 
     let emailValidation = () => {
         let email = document.forms["marketingForm"]["email-signup"].value,
@@ -55,12 +55,12 @@ $(function() {
     };
 
     let submitForm = (url, data) => {
-        return $.ajax({
-            type:"GET",
+        $.ajax({
+            type:"POST",
             url:url,
             data:data.serialize(),
-            success: console.log('Sent Ajax Form')
+            success: alert('Sent Ajax Form')
         });
+        return false;
     };
-
 });

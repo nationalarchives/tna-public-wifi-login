@@ -1,6 +1,8 @@
 /*
  * Styles for Public Wifi Login
  */
+$errorOutline: #ebab00;
+
 
 @font-face {
   font-family: bitter-local;
@@ -28,9 +30,6 @@ p, label, form input[type="submit"] {
   font-family: "open-sans-local", arial, sans-serif;
 }
 
-$errorOutline: #ebab00;
-
-
 .entry-content {
   a {
     cursor: pointer;
@@ -54,11 +53,11 @@ $errorOutline: #ebab00;
 .form-row {
   max-width: 92%;
   margin: 0 auto 1.5em;
-}
-
-.form-row {
   label {
     cursor: pointer;
+  }
+  .optional {
+    color: #6f777b;
   }
 }
 
