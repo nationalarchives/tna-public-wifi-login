@@ -90,5 +90,14 @@ legend {
 
   #connect {
     padding: 0.3em .5em; } }
+@media (max-width: 768px) {
+  #connect {
+    width: 100%; }
+
+  .center-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    float: none; } }
 
 /*# sourceMappingURL=tnaWifi.css.map */

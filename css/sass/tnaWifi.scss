@@ -113,7 +113,6 @@ legend {
   margin-left: 1em;
 }
 
-
 @media (max-width: 1024px) {
   .form-row .form-error {
     display: block;
@@ -123,5 +122,17 @@ legend {
   }
   #connect {
     padding: 0.3em .5em;
+  }
+}
+
+@media ( max-width: 768px ) {
+  #connect {
+    width: 100%;
+  }
+  .center-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
   }
 }
