@@ -32,10 +32,17 @@ p, label, form input[type="submit"] {
   outline: 3px solid #ebab00; }
 
 .form-row {
-  max-width: 92%;
-  margin: 0 auto 1.5em; }
+  /*max-width: 92%;
+  margin: 0 auto 1.5em;*/ }
   .form-row label {
-    cursor: pointer; }
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    margin-right: 0;
+    font-weight: 400;
+    margin-bottom: 5px; }
+  .form-row input {
+    /*width: 100%;*/ }
   .form-row .optional {
     color: #6f777b; }
 
@@ -78,9 +85,9 @@ legend {
   outline: 3px solid #EBAB2C;
   outline-offset: -2px; }
 
-#emailSignUp, #connect {
-  margin-left: 1em; }
-
+/*#emailSignUp, #connect {
+  margin-left: 1em;
+}*/
 @media (max-width: 1024px) {
   .form-row .form-error {
     display: block; }
@@ -99,5 +106,11 @@ legend {
     margin-left: auto;
     margin-right: auto;
     float: none; } }
+.newsletter-checkbox input {
+  margin-right: .5em; }
+.newsletter-checkbox label {
+  width: auto;
+  margin-right: 0;
+  display: inline-block; }
 
 /*# sourceMappingURL=tnaWifi.css.map */

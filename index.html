@@ -31,7 +31,7 @@
                         </div>
                         <div class="row entry-content">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <p>You must accept our <a href="#" title="t&c" tabindex="5" id="toggleTC">terms and conditions</a> to connect.</p>
+                                <p>Enter your email to accept our <a href="#" title="t&c" tabindex="5" id="toggleTC">terms and conditions</a> to connect.</p>
                                 <div id="tAndC" class="overflow hide" tabindex="6">
                                     <h3>The National Archives' internet acceptable use policy</h3>
                                     <p>The National Archives provides internet access for members of the public who visit our buildings and make use of the services and opportunities we provide. Visitors come to us for many different purposes: carrying out research activities, attending events and exhibitions, and collaborating with us. Our visitors also bring personal internet-enabled devices, both for research and for their own use.</p>
@@ -70,11 +70,12 @@
                                     <p>We are bound by the regulations of the Data Protection Act 1998. We will not release information on the use of specific internet resources by users except when required by law.</p>
 
                                 </div>
-                                <form name="marketingForm" id="marketingForm" method="post" role="form">
+                                <!--<form name="marketingForm" id="marketingForm" method="post" role="form">
                                     <fieldset>
                                         <legend>Newsletter Sign-Up</legend>
                                         <div class="form-row checkbox">
-                                            <input type="checkbox" name="newsletter" id="newsletterCheckbox">
+                                            &lt;!&ndash;<input type="checkbox" name="newsletter" id="newsletterCheckbox">&ndash;&gt;
+                                            <input type="email" id="emailSignUp" name="email-signup" placeholder="Enter your email address">
                                             <label for="newsletterCheckbox">I would like to receive The National Archives' newsletter <span class="optional">*</span></label>
                                         </div>
                                         <div class="form-row hide" id="emailSignUpContainer">
@@ -90,7 +91,7 @@
                                             <input class="pull-left" type="submit" name="submit-connect" value="Accept and Connect" id="connect" form="acceptForm">
                                         </div>
                                     </fieldset>
-                                </form>
+                                </form>-->
                                 <!--<form id="acceptForm" method="post" name="selRegForm" action="CreateAccount.action?from=SELF_REGISTRATION" data-ajax="true" role="form">
                                     <fieldset>
                                         <legend>Terms and conditions with newsletter</legend>
@@ -104,6 +105,21 @@
                                         </div>
                                     </fieldset>
                                 </form>-->
+                                <form>
+                                    <fieldset>
+                                        <div class="form-row">
+                                            <label class="hidden" for="emailSignUp">Email <span class="optional">*</span></label>
+                                            <input placeholder="Please enter email *" type="email" id="emailSignUp" required="required">
+                                        </div>
+                                        <div class="form-row newsletter-checkbox">
+                                            <input id="newsletter" type="checkbox">
+                                            <label for="newsletter">Tick if you would like to join our newsletter</label>
+                                        </div>
+                                        <div class="form-row submit">
+                                            <input class="pull-left" type="submit" name="submit-connect" value="Accept and connect" id="connect" form="acceptForm">
+                                        </div>
+                                    </fieldset>
+                                </form>
                             </div>
                         </div>
                     </article>
