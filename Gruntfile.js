@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         uglify: {
             target: {
                 files: {
-                    'js/scripts.min.js': 'js/scripts.js'
+                    'scripts.min.js': 'scripts.js'
                 }
             }
         },
@@ -22,7 +22,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "js/scripts.js": "src/scripts.js"
+                    "scripts.js": "src/scripts.js"
                 }
             }
         },
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
             build: {
                 files: [{
                     src: ['css/sass/tnaWifi.scss'],
-                    dest: 'css/tnaWifi.css'
+                    dest: 'tnaWifi.css'
                 }]
             }
         },

@@ -54,7 +54,7 @@ $(function() {
         }
     };
 
-    let submitForm = (url, data) => {
+    /*let submitForm = (url, data) => {
         $.ajax({
             type:"POST",
             url:url,
@@ -62,5 +62,6 @@ $(function() {
             success: alert('Sent Ajax Form')
         });
         return false;
-    };
+    };*/
+
 });
