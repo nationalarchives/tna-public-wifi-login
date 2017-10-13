@@ -1,8 +1,6 @@
-"use strict";
+'use strict';
 
 (function () {
-    "use strict";
-
     var app = new Vue({
         el: '#tAndC',
         data: {
