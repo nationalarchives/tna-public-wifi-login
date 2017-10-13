@@ -74,7 +74,7 @@ legend {
 .form-row .form-error {
   color: #000;
   width: 100%;
-  max-width: 420px;
+  max-width: 370px;
   padding: 5px;
   background: #FFF8D0;
   border: 2px solid #EBAB2C;
@@ -112,5 +112,16 @@ legend {
   width: auto;
   margin-right: 0;
   display: inline-block; }
+
+.has-errors input {
+  outline: 2px solid #ebab00;
+  outline-offset: -2px; }
+.has-errors .help-block {
+  color: #000;
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  padding: 3px;
+  background: #FFF8D0; }
 
 /*# sourceMappingURL=tnaWifi.css.map */

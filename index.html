@@ -32,7 +32,7 @@
                         <div class="row entry-content">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div id="tAndC">
-                                    <p>Enter your email to accept our <a href="#" title="t&c" tabindex="5" id="toggleTC" v-on:click.prevent="seen = !seen">terms and conditions</a> to connect.</p>
+                                    <p>Enter your email to accept our <a href="#" title="terms and conditions" tabindex="5" id="toggleTC" v-on:click.prevent="seen = !seen">terms and conditions</a> to connect.</p>
                                     <div class="overflow" tabindex="6" v-if="seen">
                                         <h3>The National Archives' internet acceptable use policy</h3>
                                         <p>The National Archives provides internet access for members of the public who visit our buildings and make use of the services and opportunities we provide. Visitors come to us for many different purposes: carrying out research activities, attending events and exhibitions, and collaborating with us. Our visitors also bring personal internet-enabled devices, both for research and for their own use.</p>
@@ -72,11 +72,17 @@
 
                                     </div>
                                 </div>
-                                <form>
+                                <form id="form" method="POST" v-on:submit="validateForm">
                                     <fieldset>
-                                        <div class="form-row">
+                                        <div class="form-row has-errors" v-bind:class="{ 'has-error': submition }">
                                             <label class="hidden" for="emailSignUp">Email <span class="optional">*</span></label>
-                                            <input placeholder="Please enter email *" type="email" id="emailSignUp" required="required">
+                                            <input placeholder="Please enter email *"
+                                                   type="email"
+                                                   id="emailSignUp"
+                                                   required="required"
+                                                   name="email"
+                                                   v-model="email">
+                                            <span class="help-block">Please provide your email.</span>
                                         </div>
                                         <div class="form-row newsletter-checkbox">
                                             <input id="newsletter" type="checkbox">
