@@ -6,12 +6,14 @@ module.exports = function (grunt) {
         uglify: {
             target: {
                 files: {
+                    'vue.min.js':'js/lib/vue.js',
+                    'app.min.js':'app.js',
                     'scripts.min.js': 'scripts.js'
                 }
             }
         },
         eslint: {
-            target: "src/scripts.js",
+            target: ["src/scripts.js", "src/app.js"],
             options: {
                 configFile: 'conf/eslint.json'
             }
@@ -22,16 +24,14 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "scripts.js": "src/scripts.js"
+                    "scripts.js": "src/scripts.js",
+                    "app.js" : "src/app.js"
                 }
             }
         },
-        qunit: {
-            all: ['js/tests/**/*.html']
-        },
         watch: {
             scripts: {
-                files: ['src/scripts.js', 'tests/test.js'],
+                files: ['src/scripts.js', 'tests/test.js', 'src/app.js'],
                 tasks: ['default'],
                 options: {
                     spawn: false
