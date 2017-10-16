@@ -26,7 +26,7 @@ h1, h2, h3, h4 {
   font-family: bitter-local, arial, sans-serif;
 }
 
-p, label, form input[type="submit"] {
+p, label, form button[type="submit"] {
   font-family: "open-sans-local", arial, sans-serif;
 }
 
@@ -109,7 +109,7 @@ legend {
   background: #FFF8D0;
   border: 2px solid #EBAB2C;
   display: block;
-  margin: .5em 1em;
+  margin: .5em 0;
 }
 
 .field-error {
@@ -163,7 +163,6 @@ legend {
   }
   .help-block {
     color: #000;
-    width: 100%;
     max-width: 420px;
     display: block;
     padding: 3px;
@@ -171,3 +170,28 @@ legend {
   }
 }
 
+.form-row input[name="email"], .has-errors .help-block {
+  width: 54%;
+}
+
+button[type="submit"] {
+  background-color: #008484;
+  color: #fff;
+  padding: .3em .5em;
+  border: 0;
+  height: 40px;
+  margin: 0;
+}
+
+input[name="email"]{
+  border: 1px solid #ccc;
+  padding: 2px;
+  height: 34px;
+  text-indent: 5px;
+  min-width: 220px;
+}
+
+
+.fieldError {
+  outline: 5px red dotted;
+}

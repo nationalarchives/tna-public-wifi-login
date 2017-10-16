@@ -1,6 +1,18 @@
-'use strict';
+"use strict";
 
 (function () {
+    var removeCustomAttr = function removeCustomAttr(attribute1, attribute2) {
+        "use strict";
+
+        var $emailField = document.querySelector("#emailSignUp");
+        if ($emailField) {
+            $emailField.removeAttribute(attribute1);
+            $emailField.removeAttribute(attribute2);
+            return true;
+        }
+    };
+    removeCustomAttr('type', 'required');
+
     var app = new Vue({
         el: '#tAndC',
         data: {
@@ -9,11 +21,11 @@
     });
 
     var ERRORS = {
-        required: "Please enter your email to connect",
-        invalidEmail: 'This is not a valid email address'
+        required: 'This field is required.',
+        invalidEmail: 'This is not a valid email address.'
     };
 
-    var validateEmailField = new Vue({
+    var formValidate = new Vue({
         el: '#form',
         data: {
             email: '',
@@ -21,11 +33,28 @@
             submition: false
         },
         computed: {
-            wrongEmail: function wrongEmail() {}
+            wrongEmail: function wrongEmail() {
+                if (this.email === '') {
+                    this.emailFeedback = ERRORS.required;
+                    return true;
+                } else if (!this.isEmail(this.email)) {
+                    this.emailFeedback = ERRORS.invalidEmail;
+                    return true;
+                }
+                return false;
+            }
         },
         methods: {
-            isEmail: function isEmail() {},
-            validateForm: function validateForm() {}
+            isEmail: function isEmail(email) {
+                var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return emailRegex.test(email);
+            },
+            validateForm: function validateForm(event) {
+                this.submition = true;
+                if (this.wrongEmail) {
+                    event.preventDefault();
+                }
+            }
         }
     });
 })();
