@@ -10,6 +10,13 @@
     };
     removeCustomAttr('type', 'required');
 
+    let removeNoJs = () => {
+        "use strict";
+        let $html = document.getElementsByTagName("html")[0];
+        $html.removeAttribute("class");
+    };
+    removeNoJs();
+
     let app = new Vue({
         el: '#tAndC',
         data: {

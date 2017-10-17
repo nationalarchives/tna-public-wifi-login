@@ -13,6 +13,14 @@
     };
     removeCustomAttr('type', 'required');
 
+    var removeNoJs = function removeNoJs() {
+        "use strict";
+
+        var $html = document.getElementsByTagName("html")[0];
+        $html.removeAttribute("class");
+    };
+    removeNoJs();
+
     var app = new Vue({
         el: '#tAndC',
         data: {

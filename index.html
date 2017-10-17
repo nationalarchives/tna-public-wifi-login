@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12" id="logo-holder">
-                    <img src="/img/logo-white.png" alt="The National Archives" class="img-responsive center-logo">
+                    <img src="../img/logo-white.png" alt="The National Archives" class="img-responsive center-logo">
             </div>
         </div>
     </div>
@@ -32,8 +32,8 @@
                         <div class="row entry-content">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div id="tAndC">
-                                    <p>Enter your email to accept our <a href="#" title="terms and conditions" tabindex="5" id="toggleTC" v-on:click.prevent="seen = !seen">terms and conditions</a> to connect.</p>
-                                    <div class="overflow" tabindex="6" v-if="seen">
+                                    <p>Enter your email to accept our <a href="#" title="terms and conditions" tabindex="5" id="toggleTC" @click.prevent="seen = !seen">terms and conditions</a> to connect.</p>
+                                    <div class="overflow" tabindex="6" v-if="seen" v-cloak>
                                         <h3>The National Archives' internet acceptable use policy</h3>
                                         <p>The National Archives provides internet access for members of the public who visit our buildings and make use of the services and opportunities we provide. Visitors come to us for many different purposes: carrying out research activities, attending events and exhibitions, and collaborating with us. Our visitors also bring personal internet-enabled devices, both for research and for their own use.</p>
                                         <p>The internet allows access to valuable information in many different formats, however we recognise the importance of good security practices in use of the internet, and that such a resource may be open to misuse and abuse. This policy details the terms and conditions governing use of the internet by members of the public.</p>
@@ -81,7 +81,7 @@
                                                    name="email"
                                                    v-model="email"
                                                    type="email"
-                                                   required="required" v-bind:class="{ 'fieldError': submition && wrongEmail }">
+                                                   required="required" v-bind:class="{ 'field-error': submition && wrongEmail }">
                                             <span class="form-error" v-if="submition && wrongEmail">{{ emailFeedback }}</span>
                                         </div>
                                         <div class="form-row newsletter-checkbox">
@@ -89,7 +89,6 @@
                                             <label for="newsletter">Tick if you would like to join our newsletter</label>
                                         </div>
                                         <div class="form-row submit">
-                                            <!--<input class="pull-left" type="submit" name="submit-connect" value="Accept and connect" id="connect" form="acceptForm">-->
                                             <button class="pull-left" type="submit" value="Accept and connect">Accept and connect</button>
                                         </div>
                                     </fieldset>
