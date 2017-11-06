@@ -1,9 +1,7 @@
-"use strict";
+'use strict';
 
 (function () {
     var removeCustomAttr = function removeCustomAttr(attribute1, attribute2) {
-        "use strict";
-
         var $emailField = document.querySelector("#emailSignUp");
         if ($emailField) {
             $emailField.removeAttribute(attribute1);
@@ -14,22 +12,13 @@
     removeCustomAttr('type', 'required');
 
     var removeNoJs = function removeNoJs() {
-        "use strict";
-
         var $html = document.getElementsByTagName("html")[0];
         $html.removeAttribute("class");
     };
     removeNoJs();
 
-    var app = new Vue({
-        el: '#tAndC',
-        data: {
-            seen: false
-        }
-    });
-
     var ERRORS = {
-        required: 'This field is required.',
+        required: 'Please enter your email address.',
         invalidEmail: 'This is not a valid email address.'
     };
 
@@ -38,7 +27,8 @@
         data: {
             email: '',
             emailFeedback: '',
-            submition: false
+            submition: false,
+            displayed: false
         },
         computed: {
             wrongEmail: function wrongEmail() {

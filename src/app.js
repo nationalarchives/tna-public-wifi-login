@@ -1,6 +1,5 @@
 (function(){
     let removeCustomAttr = (attribute1, attribute2) => {
-        "use strict";
         let $emailField = document.querySelector("#emailSignUp");
         if ($emailField) {
             $emailField.removeAttribute(attribute1);
@@ -11,21 +10,14 @@
     removeCustomAttr('type', 'required');
 
     let removeNoJs = () => {
-        "use strict";
         let $html = document.getElementsByTagName("html")[0];
         $html.removeAttribute("class");
     };
     removeNoJs();
 
-    let app = new Vue({
-        el: '#tAndC',
-        data: {
-            seen: false
-        }
-    });
 
     const ERRORS = {
-        required: 'This field is required.',
+        required: 'Please enter your email address.',
         invalidEmail: 'This is not a valid email address.'
     };
 
@@ -34,7 +26,8 @@
         data: {
             email: '',
             emailFeedback: '',
-            submition: false
+            submition: false,
+            displayed: false
         },
         computed: {
             wrongEmail() {
@@ -50,7 +43,7 @@
         },
         methods: {
             isEmail(email) {
-                const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                let emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return emailRegex.test(email);
             },
             validateForm(event) {

@@ -1,21 +1,30 @@
 /*
  * Styles for Public Wifi Login
  */
+/*
+* === VARIABLES ===
+*/
+/*
+* === FONTS ===
+*/
 @font-face {
   font-family: bitter-local;
-  src: url("/fonts/Bitter-Regular.otf") format("opentype"); }
+  src: url("Bitter-Regular.otf") format("opentype"); }
 @font-face {
   font-family: bitter-italic-local;
-  src: url("/fonts/Bitter-Italic.otf") format("opentype"); }
+  src: url("Bitter-Italic.otf") format("opentype"); }
 @font-face {
   font-family: open-sans-local;
-  src: url("/fonts/OpenSans-Regular.ttf") format("truetype"); }
+  src: url("OpenSans-Regular.ttf") format("truetype"); }
 h1, h2, h3, h4 {
   font-family: bitter-local, arial, sans-serif; }
 
 p, label, form button[type="submit"] {
   font-family: "open-sans-local", arial, sans-serif; }
 
+/*
+* === MAJOR SECTION BODY ===
+*/
 .entry-content a {
   cursor: pointer; }
 
@@ -41,8 +50,6 @@ p, label, form button[type="submit"] {
     margin-right: 0;
     font-weight: 400;
     margin-bottom: 5px; }
-  .form-row input {
-    /*width: 100%;*/ }
   .form-row .optional {
     color: #6f777b; }
 
@@ -73,7 +80,7 @@ legend {
 
 .form-row .form-error {
   color: #000;
-  width: 54%;
+  width: 65%;
   padding: 5px;
   background: #FFF8D0;
   display: block; }
@@ -82,9 +89,9 @@ legend {
   outline: 3px solid #EBAB2C;
   outline-offset: -2px; }
 
-/*#emailSignUp, #connect {
-  margin-left: 1em;
-}*/
+/*
+* === MEDIA QUERIES ===
+*/
 @media (max-width: 1024px) {
   .form-row .form-error {
     display: block;
@@ -129,7 +136,7 @@ legend {
   background: #FFF8D0; }
 
 .form-row input[name="email"], .form-error {
-  width: 54%; }
+  width: 65%; }
 
 button[type="submit"] {
   background-color: #008484;
@@ -139,6 +146,14 @@ button[type="submit"] {
   height: 40px;
   margin: 0; }
 
+button[type="submit"]:hover, button[type="submit"]:focus {
+  background-color: #FCE45C;
+  color: #000;
+  text-decoration: underline; }
+
+button[type="submit"]:focus {
+  outline: 3px solid #ebab00; }
+
 input[name="email"] {
   border: 1px solid #ccc;
   padding: 2px;
@@ -146,13 +161,41 @@ input[name="email"] {
   text-indent: 5px;
   min-width: 220px; }
 
+input[type="checkbox"] {
+  height: 1em;
+  width: 1em;
+  margin-top: .3em; }
+
+label[for="newsletter"] {
+  color: #6f777b; }
+
 .fieldError {
   outline: 5px red dotted; }
 
+/*
+* === NO JS STYLING ===
+*/
 .no-js .form-error {
   display: none; }
 
+/*
+* === VUE JS STUFF ===
+*/
 [v-cloak] {
   display: none; }
+
+article .entry-header {
+  background: url("dot-grey.png"); }
+
+article .entry-header:after {
+  background: url("heading-flourish.png") no-repeat bottom left; }
+
+.form-row label {
+  display: inline-block;
+  width: 100%; }
+
+fieldset {
+  border: 1px solid #eee;
+  padding: 1.5em; }
 
 /*# sourceMappingURL=tnaWifi.css.map */

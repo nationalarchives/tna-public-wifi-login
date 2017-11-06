@@ -1,35 +1,53 @@
 /*
  * Styles for Public Wifi Login
  */
+
+
+/*
+* === VARIABLES ===
+*/
 $errorOutline: #ebab00;
+$mid-light-grey: #6f777b;
+$lighter-grey: #eee;
+$bitter-local: bitter-local;
+$yellow: #FCE45C;
+$black: #000;
 
 
+/*
+* === FONTS ===
+*/
 @font-face {
   font-family: bitter-local;
-  src: url('/fonts/Bitter-Regular.otf')
+  src: url('Bitter-Regular.otf')
   format('opentype');
 }
 
 @font-face {
   font-family: bitter-italic-local;
-  src: url('/fonts/Bitter-Italic.otf')
+  src: url('Bitter-Italic.otf')
   format('opentype');
 }
 
 @font-face {
   font-family: open-sans-local;
-  src: url('/fonts/OpenSans-Regular.ttf')
+  src: url('OpenSans-Regular.ttf')
   format('truetype');
 }
 
 h1, h2, h3, h4 {
-  font-family: bitter-local, arial, sans-serif;
+  font-family: $bitter-local, arial, sans-serif;
 }
 
 p, label, form button[type="submit"] {
   font-family: "open-sans-local", arial, sans-serif;
 }
 
+
+
+/*
+* === MAJOR SECTION BODY ===
+*/
 .entry-content {
   a {
     cursor: pointer;
@@ -60,9 +78,6 @@ p, label, form button[type="submit"] {
     margin-right: 0;
     font-weight: 400;
     margin-bottom: 5px;
-  }
-  input {
-    /*width: 100%;*/
   }
   .optional {
     color: #6f777b;
@@ -103,7 +118,7 @@ legend {
 
 .form-row .form-error {
   color: #000;
-  width: 54%;
+  width: 65%;
   padding: 5px;
   background: #FFF8D0;
   display: block;
@@ -114,9 +129,11 @@ legend {
   outline-offset: -2px;
 }
 
-/*#emailSignUp, #connect {
-  margin-left: 1em;
-}*/
+
+
+/*
+* === MEDIA QUERIES ===
+*/
 
 @media (max-width: 1024px) {
   .form-row .form-error {
@@ -176,7 +193,7 @@ legend {
 }
 
 .form-row input[name="email"], .form-error {
-  width: 54%;
+  width: 65%;
 }
 
 button[type="submit"] {
@@ -187,6 +204,15 @@ button[type="submit"] {
   height: 40px;
   margin: 0;
 }
+button[type="submit"]:hover, button[type="submit"]:focus {
+  background-color: $yellow;
+  color: $black;
+  text-decoration: underline;
+}
+
+button[type="submit"]:focus {
+  outline: 3px solid $errorOutline;
+}
 
 input[name="email"]{
   border: 1px solid #ccc;
@@ -196,17 +222,50 @@ input[name="email"]{
   min-width: 220px;
 }
 
+input[type="checkbox"] {
+  height: 1em;
+  width: 1em;
+  margin-top: .3em;
+}
+label[for="newsletter"] {
+  color: $mid-light-grey;
+}
+
 
 .fieldError {
   outline: 5px red dotted;
 }
 
+/*
+* === NO JS STYLING ===
+*/
 .no-js {
   .form-error {
     display: none;
   }
 }
 
+
+/*
+* === VUE JS STUFF ===
+*/
 [v-cloak] {
   display: none;
+}
+
+article .entry-header {
+  background: url("dot-grey.png");
+}
+article .entry-header:after {
+  background: url("heading-flourish.png") no-repeat bottom left;
+}
+
+.form-row label {
+  display: inline-block;
+  width: 100%;
+}
+
+fieldset {
+  border: 1px solid $lighter-grey;
+  padding: 1.5em;
 }
