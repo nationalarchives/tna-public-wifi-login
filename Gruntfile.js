@@ -6,14 +6,13 @@ module.exports = function (grunt) {
         uglify: {
             target: {
                 files: {
-                    'vue.min.js':'js/lib/vue.js',
-                    'app.min.js':'app.js',
-                    'scripts.min.js': 'scripts.js'
+                    'js/lib/vue.min.js':'js/lib/vue.js',
+                    'src/app.min.js':'src/app.js'
                 }
             }
         },
         eslint: {
-            target: ["src/scripts.js", "src/app.js"],
+            target: ["src/app.js"],
             options: {
                 configFile: 'conf/eslint.json'
             }
@@ -24,14 +23,13 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "scripts.js": "src/scripts.js",
-                    "app.js" : "src/app.js"
+                    "src/app.js" : "src/app.js"
                 }
             }
         },
         watch: {
             scripts: {
-                files: ['src/scripts.js', 'tests/test.js', 'src/app.js'],
+                files: ['src/app.js'],
                 tasks: ['default'],
                 options: {
                     spawn: false
@@ -46,7 +44,7 @@ module.exports = function (grunt) {
             build: {
                 files: [{
                     src: ['css/sass/tnaWifi.scss'],
-                    dest: 'tnaWifi.css'
+                    dest: 'css/tnaWifi.css'
                 }]
             }
         },

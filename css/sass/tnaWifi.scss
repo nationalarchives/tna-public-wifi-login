@@ -19,19 +19,19 @@ $black: #000;
 */
 @font-face {
   font-family: bitter-local;
-  src: url('Bitter-Regular.otf')
+  src: url('../fonts/Bitter-Regular.otf')
   format('opentype');
 }
 
 @font-face {
   font-family: bitter-italic-local;
-  src: url('Bitter-Italic.otf')
+  src: url('../fonts/Bitter-Italic.otf')
   format('opentype');
 }
 
 @font-face {
   font-family: open-sans-local;
-  src: url('OpenSans-Regular.ttf')
+  src: url('../fonts/OpenSans-Regular.ttf')
   format('truetype');
 }
 
@@ -69,8 +69,6 @@ p, label, form button[type="submit"] {
 }
 
 .form-row {
-  /*max-width: 92%;
-  margin: 0 auto 1.5em;*/
   label {
     cursor: pointer;
     display: inline-block;
@@ -254,10 +252,11 @@ label[for="newsletter"] {
 }
 
 article .entry-header {
-  background: url("dot-grey.png");
+  background: url("../img/dot-grey.png");
 }
 article .entry-header:after {
-  background: url("heading-flourish.png") no-repeat bottom left;
+  //background: url("img/heading-flourish.png") no-repeat bottom left;
+  background: url("../img/heading-flourish.png") no-repeat bottom left;
 }
 
 .form-row label {

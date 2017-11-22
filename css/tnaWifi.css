@@ -1,21 +1,30 @@
 /*
  * Styles for Public Wifi Login
  */
+/*
+* === VARIABLES ===
+*/
+/*
+* === FONTS ===
+*/
 @font-face {
   font-family: bitter-local;
-  src: url("/fonts/Bitter-Regular.otf") format("opentype"); }
+  src: url("../fonts/Bitter-Regular.otf") format("opentype"); }
 @font-face {
   font-family: bitter-italic-local;
-  src: url("/fonts/Bitter-Italic.otf") format("opentype"); }
+  src: url("../fonts/Bitter-Italic.otf") format("opentype"); }
 @font-face {
   font-family: open-sans-local;
-  src: url("/fonts/OpenSans-Regular.ttf") format("truetype"); }
+  src: url("../fonts/OpenSans-Regular.ttf") format("truetype"); }
 h1, h2, h3, h4 {
   font-family: bitter-local, arial, sans-serif; }
 
-p, label, form input[type="submit"] {
+p, label, form button[type="submit"] {
   font-family: "open-sans-local", arial, sans-serif; }
 
+/*
+* === MAJOR SECTION BODY ===
+*/
 .entry-content a {
   cursor: pointer; }
 
@@ -31,13 +40,15 @@ p, label, form input[type="submit"] {
 .overflow:focus {
   outline: 3px solid #ebab00; }
 
-.form-row {
-  max-width: 92%;
-  margin: 0 auto 1.5em; }
-  .form-row label {
-    cursor: pointer; }
-  .form-row .optional {
-    color: #6f777b; }
+.form-row label {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  margin-right: 0;
+  font-weight: 400;
+  margin-bottom: 5px; }
+.form-row .optional {
+  color: #6f777b; }
 
 legend {
   display: none; }
@@ -66,31 +77,35 @@ legend {
 
 .form-row .form-error {
   color: #000;
-  width: 100%;
-  max-width: 420px;
+  width: 65%;
   padding: 5px;
   background: #FFF8D0;
-  border: 2px solid #EBAB2C;
-  display: block;
-  margin: .5em 1em; }
+  display: block; }
 
 .field-error {
   outline: 3px solid #EBAB2C;
   outline-offset: -2px; }
 
-#emailSignUp, #connect {
-  margin-left: 1em; }
-
+/*
+* === MEDIA QUERIES ===
+*/
 @media (max-width: 1024px) {
   .form-row .form-error {
-    display: block; }
+    display: block;
+    width: 65%; }
 
   #accept-error, #connect {
     margin-left: 1em; }
 
   #connect {
-    padding: 0.3em .5em; } }
+    padding: 0.3em .5em; }
+
+  .form-row input[name="email"] {
+    width: 100%; } }
 @media (max-width: 768px) {
+  .form-row input[name="email"] {
+    width: 100%; }
+
   #connect {
     width: 100%; }
 
@@ -99,5 +114,85 @@ legend {
     margin-left: auto;
     margin-right: auto;
     float: none; } }
+.newsletter-checkbox input {
+  margin-right: .5em;
+  position: absolute; }
+.newsletter-checkbox label {
+  width: auto;
+  margin: 0 1.5em;
+  display: inline-block; }
+
+.has-errors input {
+  outline: 2px solid #ebab00;
+  outline-offset: -2px; }
+.has-errors .help-block {
+  color: #000;
+  max-width: 420px;
+  display: block;
+  padding: 3px;
+  background: #FFF8D0; }
+
+.form-row input[name="email"], .form-error {
+  width: 65%; }
+
+button[type="submit"] {
+  background-color: #008484;
+  color: #fff;
+  padding: .3em .5em;
+  border: 0;
+  height: 40px;
+  margin: 0; }
+
+button[type="submit"]:hover, button[type="submit"]:focus {
+  background-color: #FCE45C;
+  color: #000;
+  text-decoration: underline; }
+
+button[type="submit"]:focus {
+  outline: 3px solid #ebab00; }
+
+input[name="email"] {
+  border: 1px solid #ccc;
+  padding: 2px;
+  height: 34px;
+  text-indent: 5px;
+  min-width: 220px; }
+
+input[type="checkbox"] {
+  height: 1em;
+  width: 1em;
+  margin-top: .3em; }
+
+label[for="newsletter"] {
+  color: #6f777b; }
+
+.fieldError {
+  outline: 5px red dotted; }
+
+/*
+* === NO JS STYLING ===
+*/
+.no-js .form-error {
+  display: none; }
+
+/*
+* === VUE JS STUFF ===
+*/
+[v-cloak] {
+  display: none; }
+
+article .entry-header {
+  background: url("../img/dot-grey.png"); }
+
+article .entry-header:after {
+  background: url("../img/heading-flourish.png") no-repeat bottom left; }
+
+.form-row label {
+  display: inline-block;
+  width: 100%; }
+
+fieldset {
+  border: 1px solid #eee;
+  padding: 1.5em; }
 
 /*# sourceMappingURL=tnaWifi.css.map */
