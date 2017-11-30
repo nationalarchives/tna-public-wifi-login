@@ -20,11 +20,11 @@
         </div>
     </div>
 </header>
-<div id="primary" class="content-area">
+<div id="primary" class="content-area body_spacing">
     <div class="container">
         <div class="row">
             <main class="col-xs-12 col-sm-8 col-md-8">
-                <div class="body_spacing">
+
                     <article>
                         <div class="entry-header">
                             <h1>Welcome to our free Wi-Fi</h1>
@@ -47,7 +47,7 @@
                                             <span class="form-error" v-if="submition && wrongEmail">{{ emailFeedback }}</span>
                                         </div>
                                         <div class="form-row">
-                                            <p>By clicking connect, you agree to the <a href="#" title="terms and conditions" id="toggleTC" @click.prevent="displayed = !displayed" tabindex="2">terms of use</a></p>
+                                            <p>By clicking connect, you agree to the <a href="#" title="terms and conditions" id="toggleTC" @click.prevent="displayed = !displayed" tabindex="2">terms of use</a>.</p>
                                             <div tabindex="3" class="overflow" v-if="displayed" v-cloak>
                                                 <h3>The National Archives' internet acceptable use policy</h3>
                                                 <p>The National Archives provides internet access for members of the public who visit our buildings and make use of the services and opportunities we provide. Visitors come to us for many different purposes: carrying out research activities, attending events and exhibitions, and collaborating with us. Our visitors also bring personal internet-enabled devices, both for research and for their own use.</p>
@@ -89,7 +89,7 @@
                                         </div>
                                         <div class="form-row newsletter-checkbox">
                                             <input tabindex="4" id="newsletter" type="checkbox">
-                                            <label for="newsletter">I would like free email updates about news, products and services, including a monthly newsletter, from The National Archives (optional). For the full privacy policy see our website.</label>
+                                            <label for="newsletter">Opt in to free email updates about news, products and services, including a monthly newsletter, from The National Archives. (optional)</br>For the full privacy policy see our website or refer to notices in our reading rooms.</label>
                                         </div>
                                         <div class="form-row submit">
                                             <button tabindex="5" class="pull-right" type="submit" value="Accept and connect" aria-label="submit">Connect</button>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                     </article>
-                </div>
+
             </main>
         </div>
     </div>
