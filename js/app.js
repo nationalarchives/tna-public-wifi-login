@@ -1,19 +1,11 @@
 'use strict';
 
 (function () {
-    var removeCustomAttr = function removeCustomAttr(attribute1, attribute2) {
-        var $emailField = document.querySelector("#emailSignUp");
-        if ($emailField) {
-            $emailField.removeAttribute(attribute1);
-            $emailField.removeAttribute(attribute2);
-            return true;
-        }
-    };
-    removeCustomAttr('type', 'required');
+    Vue.config.productionTip = false;
 
     var removeNoJs = function removeNoJs() {
-        var $html = document.getElementsByTagName("html")[0];
-        $html.removeAttribute("class");
+        var $html = document.getElementsByTagName('html')[0];
+        $html.removeAttribute('class');
     };
     removeNoJs();
 
@@ -28,7 +20,8 @@
             email: '',
             emailFeedback: '',
             submition: false,
-            displayed: false
+            displayed: false,
+            novalidation: 'novalidate'
         },
         computed: {
             wrongEmail: function wrongEmail() {

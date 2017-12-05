@@ -1,36 +1,25 @@
-'use strict';
-
 (function () {
     Vue.config.productionTip = false;
 
-    var removeCustomAttr = function removeCustomAttr(attribute1, attribute2) {
-        var $emailField = document.querySelector("#emailSignUp");
-        if ($emailField) {
-            $emailField.removeAttribute(attribute1);
-            $emailField.removeAttribute(attribute2);
-            return true;
-        }
-    };
-    removeCustomAttr('type', 'required');
-
-    var removeNoJs = function removeNoJs() {
-        var $html = document.getElementsByTagName("html")[0];
-        $html.removeAttribute("class");
+    const removeNoJs = () => {
+        const $html = document.getElementsByTagName('html')[0];
+        $html.removeAttribute('class');
     };
     removeNoJs();
 
-    var ERRORS = {
+    const ERRORS = {
         required: 'Please enter your email address.',
         invalidEmail: 'This is not a valid email address.'
     };
 
-    var formValidate = new Vue({
+    const formValidate = new Vue({
         el: '#form',
         data: {
             email: '',
             emailFeedback: '',
             submition: false,
-            displayed: false
+            displayed: false,
+            novalidation: 'novalidate'
         },
         computed: {
             wrongEmail: function wrongEmail() {
@@ -58,12 +47,3 @@
         }
     });
 })();
-//# sourceMappingURL=app.js.map
-//# sourceMappingURL=app.js.map
-//# sourceMappingURL=app.js.map
-//# sourceMappingURL=app.js.map
-//# sourceMappingURL=app.js.map
-//# sourceMappingURL=app.js.map
-//# sourceMappingURL=app.js.map
-//# sourceMappingURL=app.js.map
-//# sourceMappingURL=app.js.map

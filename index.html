@@ -31,7 +31,7 @@
                         </div>
                         <div class="row entry-content">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <form id="form" method="POST" v-on:submit="validateForm">
+                                <form v-bind:novalidate="novalidation" id="form" method="POST" v-on:submit="validateForm">
                                     <fieldset>
                                         <legend>Free Wi-Fi Registration</legend>
                                         <div class="form-row">
@@ -44,7 +44,7 @@
                                                    aria-required="true"
                                                    required="required"
                                                    v-bind:class="{ 'field-error': submition && wrongEmail }">
-                                            <span class="form-error" v-if="submition && wrongEmail">{{ emailFeedback }}</span>
+                                            <span v-cloak class="form-error" v-if="submition && wrongEmail">{{ emailFeedback }}</span>
                                         </div>
                                         <div class="form-row">
                                             <p>By clicking connect, you agree to the <a href="#" title="terms and conditions" id="toggleTC" @click.prevent="displayed = !displayed" tabindex="2">terms of use</a>.</p>
@@ -89,7 +89,7 @@
                                         </div>
                                         <div class="form-row newsletter-checkbox">
                                             <input tabindex="4" id="newsletter" type="checkbox">
-                                            <label>Tick here if you would like free updates about news, products and services, including a monthly newsletter, from The National Archives.</br>For the full privacy policy see our website or refer to notices in our reading rooms.</label>
+                                            <label for="newsletter">Tick here if you would like free updates about news, products and services, including a monthly newsletter, from The National Archives.<br>For the full privacy policy see our website or refer to notices in our reading rooms.</label>
                                         </div>
                                         <div class="form-row submit">
                                             <button tabindex="5" class="pull-right" type="submit" value="Accept and connect" aria-label="submit">Connect</button>
@@ -104,7 +104,7 @@
         </div>
     </div>
 </div>
-<script src="js/lib/vue.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="src/app.min.js"></script>
+<script src="js/lib/vue.min.js"></script>
+<script src="js/app.min.js"></script>
 </body>
 </html>

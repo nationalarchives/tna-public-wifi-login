@@ -140,7 +140,6 @@ form {
     &:hover, &:focus {
       background-color: $yellow;
       color: $black;
-      text-decoration: underline;
     }
     &:focus {
       outline: 3px solid $errorOutline;
@@ -198,6 +197,9 @@ form {
 .no-js {
   .form-error {
     display: none;
+  }
+  .overflow {
+    display: block;
   }
 }
 

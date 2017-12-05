@@ -85,8 +85,7 @@ form fieldset {
     margin: 0; }
     .submit button:hover, .submit button:focus {
       background-color: #FCE45C;
-      color: #000;
-      text-decoration: underline; }
+      color: #000; }
     .submit button:focus {
       outline: 3px solid #ebab00; }
     @media (max-width: 768px) {
@@ -127,6 +126,8 @@ form fieldset {
 */
 .no-js .form-error {
   display: none; }
+.no-js .overflow {
+  display: block; }
 
 /*
 * === MEDIA QUERIES ===
