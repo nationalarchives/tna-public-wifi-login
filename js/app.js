@@ -1,19 +1,26 @@
 'use strict';
 
 (function () {
+    //This takes off the development mode from the console.
     Vue.config.productionTip = false;
+    //END** This takes off the development mode from the console.
 
+    //This will remove the no js class from the HTML Tag.
     var removeNoJs = function removeNoJs() {
         var $html = document.getElementsByTagName('html')[0];
         $html.removeAttribute('class');
     };
     removeNoJs();
+    //END** This will remove the no js class from the HTML Tag.
 
+    //These are the Error objects
     var ERRORS = {
         required: 'Please enter your email address.',
         invalidEmail: 'This is not a valid email address.'
     };
+    //END** These are the Error objects
 
+    //This is the Vue App.
     var formValidate = new Vue({
         el: '#form',
         data: {
