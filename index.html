@@ -4,47 +4,51 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="initial-scale = 1.0" name="viewport">
-    <title>TNA Wifi Login prototype 1</title>
-    <link rel='stylesheet' id='tna-styles-css' href='../css/base-sass.css' type='text/css' media='all'/>
-    <link rel='stylesheet' id='new-styles-css' href='../css/override.css' type='text/css' media='all'/>
-    <link rel='stylesheet' id='tna-google-fonts-css'
-          href='https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C700%2C400italic%2C700italic%7CBitter&#038;ver=4.4.1'
-          type='text/css' media='all'/>
-    <script
-            src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-            integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
-            crossorigin="anonymous"></script>
+    <title>The National Archives Public Wifi Login</title>
+    <link rel='stylesheet' id='tna-styles-css' href='css/base-sass.min.css' type='text/css' media='all'/>
+    <link rel='stylesheet' href='css/tnaWifi.css' type='text/css' media='all'/>
 </head>
 
 <body class="home page">
-<header id="header" role="banner">
+<header id="header">
     <a id="skip-to-main-content" href="#">Skip to Main Content</a>
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12" id="logo-holder">
-                <a href="#" title="Go to The National Archives homepage" class="visible-lg visible-md visible-sm" tabindex="5">
-                    <img src="../img/logo-white.png" alt="The National Archives" class="img-responsive">
-                </a>
+                    <img src="img/logo-white.png" alt="The National Archives" class="img-responsive center-logo">
             </div>
         </div>
     </div>
 </header>
-<div id="primary" class="content-area">
+<div id="primary" class="content-area body_spacing">
     <div class="container">
         <div class="row">
-            <main role="main" class="col-xs-12 col-sm-8 col-md-8">
-                <div class="body_spacing">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <article>
-                                    <div class="entry-header">
-                                        <h1>Welcome to our free Wi-Fi</h1>
-                                    </div>
-                                    <div class="row entry-content">
-                                        <div class="col-xs-12 col-sm-12 col-md-12">
-                                            <p>You must accept our <a href="#" title="t&c" tabindex="5">terms and conditions</a> to connect.</p>
-                                            <div id="t&c" class="overflow hide" tabindex="6">
+            <main class="col-xs-12 col-sm-8 col-md-8">
+
+                    <article>
+                        <div class="entry-header">
+                            <h1>Welcome to our free Wi-Fi</h1>
+                        </div>
+                        <div class="row entry-content">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <form v-bind:novalidate="novalidation" id="form" method="POST" v-on:submit="validateForm">
+                                    <fieldset>
+                                        <legend>Free Wi-Fi Registration</legend>
+                                        <div class="form-row">
+                                            <label for="emailSignUp">Email address</label>
+                                            <input id="emailSignUp"
+                                                   tabindex="1"
+                                                   name="email"
+                                                   v-model="email"
+                                                   type="email"
+                                                   aria-required="true"
+                                                   required="required"
+                                                   v-bind:class="{ 'field-error': submition && wrongEmail }">
+                                            <span v-cloak class="form-error" v-if="submition && wrongEmail">{{ emailFeedback }}</span>
+                                        </div>
+                                        <div class="form-row">
+                                            <p>By clicking connect, you agree to the <a href="#" title="terms and conditions" id="toggleTC" @click.prevent="displayed = !displayed" tabindex="2">terms of use</a>.</p>
+                                            <div tabindex="3" class="overflow" v-if="displayed" v-cloak>
                                                 <h3>The National Archives' internet acceptable use policy</h3>
                                                 <p>The National Archives provides internet access for members of the public who visit our buildings and make use of the services and opportunities we provide. Visitors come to us for many different purposes: carrying out research activities, attending events and exhibitions, and collaborating with us. Our visitors also bring personal internet-enabled devices, both for research and for their own use.</p>
                                                 <p>The internet allows access to valuable information in many different formats, however we recognise the importance of good security practices in use of the internet, and that such a resource may be open to misuse and abuse. This policy details the terms and conditions governing use of the internet by members of the public.</p>
@@ -82,37 +86,25 @@
                                                 <p>We are bound by the regulations of the Data Protection Act 1998. We will not release information on the use of specific internet resources by users except when required by law.</p>
 
                                             </div>
-                                            <form id="accept-checkboxes" method="post" name="selRefForm">
-                                                <fieldset>
-                                                    <legend>Terms and conditions with newsletter</legend>
-                                                    <div class="form-row checkbox">
-                                                        <input type="checkbox" id="accept" name="accept" value="yes" aria-required="true" required="required">
-                                                        <label for="accept">Accept *</label>
-                                                        <span id="accept-error" class="form-error form-hint hide">You must accept the terms and conditions to connect.</span>
-                                                    </div>
-                                                    <div class="form-row checkbox">
-                                                        <input type="checkbox" name="newsletter" id="newsletter">
-                                                        <label for="newsletter">I would like to receive The National Archives' newsletter.</label>
-                                                    </div>
-                                                    <div class="form-row email-signup hide">
-                                                        <input type="email" id="email-signup" name="email-signup" placeholder="Enter your email address">
-                                                    </div>
-                                                    <div class="form-row submit">
-                                                        <input class="pull-left" type="submit" name="submit-connect" value="Connect" id="connect">
-                                                    </div>
-                                                </fieldset>
-                                            </form>
                                         </div>
-                                    </div>
-                                </article>
+                                        <div class="form-row newsletter-checkbox">
+                                            <input tabindex="4" id="newsletter" type="checkbox">
+                                            <label for="newsletter">Tick here if you would like free updates about news, products and services, including a monthly newsletter, from The National Archives.<br>For the full privacy policy see our website or refer to notices in our reading rooms.</label>
+                                        </div>
+                                        <div class="form-row submit">
+                                            <button tabindex="5" class="pull-right" type="submit" value="Accept and connect" aria-label="submit">Connect</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </article>
+
             </main>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="js/scripts.js"></script>
+<script src="js/lib/vue.min.js"></script>
+<script src="js/app.min.js"></script>
 </body>
 </html>
