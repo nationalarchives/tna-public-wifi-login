@@ -47,8 +47,8 @@ form fieldset {
     margin-right: 0;
     font-weight: 400;
     margin-bottom: 5px; }
-    form fieldset .form-row label [for="newsletter"] {
-      color: #6f777b; }
+  form fieldset .form-row [for="newsletter"] {
+    color: #6f777b; }
   form fieldset .form-row .overflow {
     position: relative;
     height: 300px;

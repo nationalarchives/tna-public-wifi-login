@@ -85,10 +85,9 @@ form {
         margin-right: 0;
         font-weight: 400;
         margin-bottom: 5px;
-
-        [for="newsletter"] {
-          color: $mid-light-grey;
-        }
+      }
+      [for="newsletter"] {
+        color: $mid-light-grey;
       }
       .overflow {
         position: relative;
