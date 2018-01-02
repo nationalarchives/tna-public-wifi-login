@@ -27,6 +27,12 @@ p, label, form button[type="submit"] {
 */
 .body_spacing {
   padding-top: 1.5em; }
+  @media (min-width: 992px) {
+    .body_spacing main {
+      width: 81%; } }
+  @media (min-width: 768px) {
+    .body_spacing main {
+      width: 81%; } }
   .body_spacing article .entry-header {
     background: url("../img/dot-grey.png"); }
     .body_spacing article .entry-header:after {
@@ -36,7 +42,7 @@ p, label, form button[type="submit"] {
 
 form fieldset {
   border: 1px solid #eee;
-  padding: 1.5em; }
+  padding: 1.3em; }
   form fieldset legend {
     display: none; }
   form fieldset .form-row label {
@@ -74,7 +80,7 @@ form fieldset {
     position: absolute; }
 
 .submit {
-  margin-top: 2em; }
+  margin-top: 1em; }
   .submit button {
     font-family: "open-sans-local", arial, sans-serif;
     background-color: #008484;
@@ -92,19 +98,21 @@ form fieldset {
       .submit button {
         width: 100%; } }
 
-.form-row input[name="email"] {
-  width: 65%;
-  height: 34px; }
-.form-row .form-error {
-  color: #000;
-  width: 65%;
-  height: 34px;
-  padding: 5px;
-  background: #FFF8D0;
-  display: block; }
-.form-row .field-error {
-  outline: 3px solid #EBAB2C;
-  outline-offset: -2px; }
+.form-row {
+  margin-bottom: .4em; }
+  .form-row input[name="email"] {
+    width: 65%;
+    height: 34px; }
+  .form-row .form-error {
+    color: #000;
+    width: 65%;
+    height: 34px;
+    padding: 5px;
+    background: #FFF8D0;
+    display: block; }
+  .form-row .field-error {
+    outline: 3px solid #EBAB2C;
+    outline-offset: -2px; }
 
 .newsletter-checkbox input {
   margin-right: .5em;

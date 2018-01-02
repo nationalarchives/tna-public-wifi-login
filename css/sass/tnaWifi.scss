@@ -12,6 +12,8 @@ $lighter-grey: #eee;
 $bitter-local: bitter-local;
 $yellow: #FCE45C;
 $black: #000;
+$tablet-width: 768px;
+$desktop-width: 992px;
 
 
 /*
@@ -52,6 +54,15 @@ p, label, form button[type="submit"] {
 .body_spacing {
   padding-top: 1.5em;
 
+  main {
+    @media (min-width: $desktop-width) {
+      width: 81%;
+    }
+    @media (min-width: $tablet-width) {
+      width: 81%;
+    }
+  }
+
   article {
     .entry-header {
       background: url("../img/dot-grey.png");
@@ -71,7 +82,7 @@ p, label, form button[type="submit"] {
 form {
   fieldset {
     border: 1px solid $lighter-grey;
-    padding: 1.5em;
+    padding: 1.3em;
 
     legend {
       display: none;
@@ -125,7 +136,7 @@ form {
 }
 
 .submit {
-  margin-top: 2em;
+  margin-top: 1em;
 
   button {
     font-family: "open-sans-local", arial, sans-serif;
@@ -150,6 +161,9 @@ form {
 }
 
 .form-row {
+
+  margin-bottom: .4em;
+
   input[name="email"] {
     width: 65%;
     height: 34px;
